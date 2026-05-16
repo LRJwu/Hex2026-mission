@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
+:root{
+    --bs-primary:#24140B;
+    --dark:#404040;
+}
+body{color: var(--dark);font-family: "Noto Sans TC", sans-serif;line-height: 1.5;}
+a{text-decoration: none;color: var(--dark);}
+a:hover{color: var(--bs-primary);filter: contrast(0.5);}
+.text-dark{color: var(--dark);}
+.fs-7{font-size: 12px;}
+.fw-500{font-weight: 500;}
+.container{max-width: 1296px;}
+
+/* blogMenu */
+.nav-pills .nav-link.active,.nav-pills .nav-link:hover, .nav-pills .show>.nav-link{
+    color: white;
+    background: var(--bs-primary);
+}
+.nav-pills .nav-link{
+    color: var(--dark);
+    border-radius: 0;
+    font-weight: 700;
+    font-size: 18px;
+    transition: all 0.5s ease-in;
+}
+.nav-pills .nav-link:hover{ transform: scale(0.75); }
+@media (max-width: 991.98px) { 
+    .sideMenu ul{width: max-content;}
+}
+
+/* PostList */
+#PostList .list-link{ min-height: 256px; }
+.bg-img{
+    background: var(--dark) url('https://github.com/hexschool/2022-web-layout-training/blob/main/2026-web-camp/blog_1.png?raw=true')center/100% no-repeat;
+    transition: all 0.5s ease-in;
+    min-height: 200px;
+}
+#PostList li:nth-child(2) .bg-img{ background-image: url('https://github.com/hexschool/2022-web-layout-training/blob/main/2026-web-camp/blog_2.png?raw=true'); }
+#PostList li:nth-child(3) .bg-img{ background-image: url('https://github.com/hexschool/2022-web-layout-training/blob/main/2026-web-camp/blog_3.png?raw=true'); }
+#PostList li:nth-child(4) .bg-img{ background-image: url('https://github.com/hexschool/2022-web-layout-training/blob/main/2026-web-camp/blog_4.png?raw=true'); }
+#PostList li:nth-child(5) .bg-img{ background-image: url('https://github.com/hexschool/2022-web-layout-training/blob/main/2026-web-camp/blog_5.png?raw=true'); }
+.li-title{
+    margin: 12px 0;
+}
+.list-link:hover .bg-img{
+    opacity: 0.75;
+    background-size: 150%;
+    filter: blur(5px);
+}
+.lable+.lable::before{
+    content: "．";
+}
+i{font-style: normal;}
+i::before{margin-right: 4px;}
+i+i.bi{margin-left: 12px;}
+
+/* pagintion */
+.page-item{width: 40px;height: 40px;}
+.page-link{
+    color: var(--dark);
+    border:0;
+    border-radius: 100%;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+.page-link.active{
+    color: white;
+    background: var(--bs-primary);
+}
