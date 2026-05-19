@@ -1,0 +1,41 @@
+$grid-coulmn: 12;
+$grid-breakpoints: (
+  xs: 0,
+  sm: 375px,
+//   sm: 576px,
+//   md: 768px,
+//   lg: 992px,
+//   xl: 1200px,
+//   xxl: 1400px
+) !default;
+$text-breakpoints:(
+  "xxxlg"
+  "xxlg"
+  "xlg"
+  "lg"
+  "md"
+  "sm"
+  "xsm"
+  "xxsm"
+  "xxxsm"
+  "xxxxsm"
+) !default;
+$colors: (
+  "primary-50": #FDF7F1,
+  "primary-100": #FBEEDC,
+  "primary-200": #F8E4C6,
+  "primary-300": #F5D9B0,
+  "primary-400": #F2CE9A,
+  "primary-500": #F5B87B,
+  "primary-600": #E89D5C,
+  "primary-700": #DB813D,
+  "primary-800": #CE661E,
+  "primary-900": #24140B,
+
+  "neutral-0": #FFFFFF,
+  "neutral-500": #737373,
+  "neutral-700": #404040,
+  "neutral-900": #1E1E1E
+);
+// 前綴
+$prefix: "grid-";

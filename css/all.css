@@ -1,0 +1,229 @@
+@charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* 以上為reset.css的內容，以下為自定義的樣式 */
+:root {
+  /* 颜色系统 */
+  --color-primary-50: #FDF7F1;
+  --color-primary-100: #FDE6CF;
+  --color-primary-500:#F5B87B;
+  --color-primary-900:#24140B;
+  --color-neutral-0:#FFFFFF;
+  --color-neutral-500:#737373;
+  --color-neutral-700:#404040;
+  --color-neutral-900:#1E1E1E;
+  --color-dark-40a: rgba(0, 0, 0, 0.4);
+  --color-dark-60a: rgba(0, 0, 0, 0.6);
+  /*  文字系统 */
+  --line-height: 1.5;
+  --line-height-sm: 1.2;
+  --font-weight-regular:500;
+  --font-weight-bold: 700;
+  /* grid系统 */
+  --grid-gap: 24px;
+  --grid-gap-sm: 12px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.contenter {
+  max-width: 1296px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--grid-gap);
+}
+.row .col {
+  flex: 1;
+  padding: 0 1rem;
+}
+.row .col-1 {
+  flex: 0 0 calc(100% / 12 * 1 - var(--grid-gap));
+}
+.row .col-2 {
+  flex: 0 0 calc(100% / 12 * 2 - var(--grid-gap));
+}
+.row .col-3 {
+  flex: 0 0 calc(100% / 12 * 3 - var(--grid-gap));
+}
+.row .col-4 {
+  flex: 0 0 calc(100% / 12 * 4 - var(--grid-gap));
+}
+.row .col-5 {
+  flex: 0 0 calc(100% / 12 * 5 - var(--grid-gap));
+}
+.row .col-6 {
+  flex: 0 0 calc(100% / 12 * 6 - var(--grid-gap));
+}
+.row .col-7 {
+  flex: 0 0 calc(100% / 12 * 7 - var(--grid-gap));
+}
+.row .col-8 {
+  flex: 0 0 calc(100% / 12 * 8 - var(--grid-gap));
+}
+.row .col-9 {
+  flex: 0 0 calc(100% / 12 * 9 - var(--grid-gap));
+}
+.row .col-10 {
+  flex: 0 0 calc(100% / 12 * 10 - var(--grid-gap));
+}
+.row .col-11 {
+  flex: 0 0 calc(100% / 12 * 11 - var(--grid-gap));
+}
+.row .col-12 {
+  flex: 0 0 calc(100% / 12 * 12 - var(--grid-gap));
+}
+
+/* 文字樣式 */
+body {
+  font-family: "Noto Sans", sans-serif;
+  color: var(--color-neutral-500);
+  line-height: var(--line-height);
+}
+
+.heading-xlg, .heading-xxlg, .heading-xxxlg, .display-2, .display-1 {
+  font-weight: var(--font-weight-bold, 700);
+  line-height: var(--line-height-sm, 1.2);
+  letter-spacing: 0%;
+}
+
+.heading-xxxxsm, .heading-xxxsm, .heading-xxsm, .heading-xsm, .heading-sm, .heading-md, .heading-lg {
+  font-weight: var(--font-weight-bold, 700);
+  line-height: var(--line-height, 1.5);
+}
+
+.paragraph-xsm, .paragraph-sm, .paragraph-md, .label-xsm, .label-sm, .label-md {
+  font-weight: var(--font-weight-regular, 500);
+  line-height: var(--line-height, 1.5);
+}
+
+.display-1 {
+  font-size: 300px;
+}
+
+.display-2 {
+  font-size: 160px;
+}
+
+.heading-xxxlg {
+  font-size: 80px;
+}
+
+.heading-xxlg {
+  font-size: 48px;
+}
+
+.heading-xlg {
+  font-size: 40px;
+}
+
+.heading-lg {
+  font-size: 32px;
+}
+
+.heading-md {
+  font-size: 28px;
+}
+
+.heading-sm {
+  font-size: 24px;
+}
+
+.heading-xsm {
+  font-size: 20px;
+}
+
+.heading-xxsm {
+  font-size: 18px;
+}
+
+.heading-xxxsm {
+  font-size: 16px;
+}
+
+.heading-xxxxsm {
+  font-size: 14px;
+}
+
+.label-md {
+  font-size: 16px;
+}
+
+.label-sm {
+  font-size: 14px;
+}
+
+.label-xsm {
+  font-size: 13px;
+}
+
+.paragraph-md {
+  font-size: 16px;
+}
+
+.paragraph-sm {
+  font-size: 14px;
+}
+
+.paragraph-xsm {
+  font-size: 13px;
+}/*# sourceMappingURL=all.css.map */
