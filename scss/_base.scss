@@ -19,34 +19,130 @@
   
   --font-weight-regular:500;
   --font-weight-bold: 700;
-  /* grid系统 */
-  --grid-gap: 24px;
-  --grid-gap-sm: 12px;
+  /* grid */
+  --gap:24px;
 }
-*,*::before,*::after { box-sizing: border-box;}
-
+.bg-primary{
+  background-color: var(--color-primary-900);
+  color:var(--color-neutral-0);
+}
 .contenter {
-  max-width: calc(86px * 12 + 24px * 11);
+  max-width: calc($max-width);
   margin: 0 auto; 
   padding: 0 1rem;
 }
 .row{
   display: flex;
   flex-wrap: wrap;
-  gap: var(--grid-gap);
-  .col{
-    flex: 1;
-    padding: 0 1rem;
+  gap: calc((var(--gap) / 2));
+}
+@for $i from 1 through $grid-coulmn {
+  .col-#{$i} {
+    width: calc((100% - var(--gap) * ($grid-coulmn - 1)) / $grid-coulmn * $i + var(--gap) * ($i - 1));
   }
+}
+@media (min-width:$max-width) {
+  .contenter{ padding: 0; }
+  :root{--gap: 12px;}
   @for $i from 1 through $grid-coulmn {
-    .col-#{$i} {
-      flex: 0 0 calc((100% / #{$grid-coulmn}) * #{$i} - var(--grid-gap));
+    .col-sm-#{$i} {
+      width: calc((100% - var(--gap) * ($grid-coulmn - 1)) / $grid-coulmn * $i + var(--gap) * ($i - 1));
+    } 
+  }
+}
+.jcc{ justify-content: center; }
+.jcsb{ justify-content: space-between; }
+.jcsa{ justify-content: space-around; }
+.jcfe{ justify-content: flex-end; }
+.jcfs{ justify-content: flex-start; }
+.aic{ align-items: center; }
+
+/* 操作類*/
+%btn{
+  display: inline-block;
+  border-radius: 999px;
+  color: var(--color-neutral-0);
+  // padding: 12px;
+}
+%btn-hover{
+  transition: all 0.3s ease;
+}
+%btn-lg{
+  @extend %btn;
+  @extend .label-md;
+  padding: 12px 24px;
+  gap: 8px;
+}
+%btn-md{
+  @extend %btn;
+  @extend .label-sm;
+  padding: 12px 20px;
+  gap: 8px;
+}
+
+.btn{
+  @extend %btn;
+  background: var(--color-neutral-700);
+  &.material-symbols-outlined{
+      padding: 12px;
+    }
+}
+.btn:hover {
+  background-color: var(--color-neutral-900);
+  @extend %btn-hover;
+}
+@each $color, $value in $btn-colors {
+  .btn-#{$color} {
+    @extend %btn;
+    background-color: map-get($value, bg);
+    @if $color == "white" {
+      color: map-get($value, color);
+    }
+    &.material-symbols-outlined{
+      padding: 12px;
     }
   }
-  // @media screen (max-width:375px) {
-
-    
-  // }
+  .btn-#{$color}:hover {
+    background-color: map-get($value, hover-bg);
+    @extend %btn-hover;
+  }
+  //以下尺寸變化
+  @each $size, $properties in $btn-sizes {
+    @if $color == "neutral" {
+      .btn-#{$size} {
+        @extend %btn;
+        @extend .label-#{map-get($properties, lebel-size)};
+        padding: map-get($properties, padding);
+        background-color: map-get($value, bg);
+        gap: 8px;
+      }
+        .btn-#{$size}:hover {
+          background-color: map-get($value, hover-bg);
+          @extend %btn-hover;
+        }
+    } @else {
+        .btn-#{$color}-#{$size} {
+          @extend %btn;
+          @extend .label-#{map-get($properties, lebel-size)};
+          padding: map-get($properties, padding);
+          background-color: map-get($value, bg);
+          @if $color == "white" {
+            color: map-get($value, color);
+          }
+          gap: 8px;
+        }
+        .btn-#{$color}-#{$size}:hover {
+          background-color: map-get($value, hover-bg);
+          @extend %btn-hover;
+        }
+      }
+  }
+}
+.border{
+  border: $border-width solid;
+}
+.border-hover:hover {
+  @extend .border;
 }
 /* 文字樣式 */
 body{
@@ -88,3 +184,44 @@ body{
 .paragraph-md{ font-size: 16px; @extend %paragraph; }
 .paragraph-sm{ font-size: 14px; @extend %paragraph; }
 .paragraph-xsm{ font-size: 13px; @extend %paragraph; } 
+
+/* google icon 預設設定 */
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  font-size: 12px;
+}
+/* text field */
+.text-field {
+  display: block;
+  border-radius: 40px;
+  @extend .border;
+  padding: 8px - $border-width;
+  color: var(--color-neutral-0);
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
+  
+  *{padding:12px 24px;}
+  .input-text-lg{
+    @extend .paragraph-md;
+    flex: auto;
+    
+    &+.btn-white{
+      @extend .btn-white;
+      @extend .label-md;
+    }
+  }
+  
+  .input-text-md{
+    @extend .paragraph-sm;
+    flex: auto;
+    padding: 8px 12px;
+    
+    &+.btn-white{
+      @extend .btn-white;
+      @extend .label-sm;
+      padding: 12px 20px;
+    }
+  }
+}

@@ -2,9 +2,9 @@
 @import "_variables.scss";
 @import "_base.scss";
 
-// @for $i from 1 through length($colors) {
+// @for $i from 1 through 3 {
 
-//     body *:nth-child(#{$i}) {
+//     div *:nth-child(#{$i}) {
 //         border: 1px solid var(--color-neutral-900);
 //         background-color: nth(map-values($colors), random(length($colors))); // 随机背景颜色
 //     }

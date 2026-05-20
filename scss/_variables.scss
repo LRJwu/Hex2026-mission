@@ -1,4 +1,35 @@
 $grid-coulmn: 12;
+$grid-gap: 24px;
+$max-width: 86px * 12 + $grid-gap * 11;
+$btn-sizes: (
+  "lg": (
+    lebel-size:"md",
+    padding: 0.75em 1.5em,
+  ),
+  "md": (
+    lebel-size:"sm",
+    padding: 12px 20px,
+  )
+);
+$btn-colors: (
+  "white": (
+    color: var(--color-neutral-700),
+    bg: var(--color-neutral-0),
+    hover-bg: var(--color-primary-50)
+    ),
+  "primary": (
+    bg: var(--color-primary-900),
+    hover-bg: var(--color-neutral-900)
+    ),
+  "neutral": (
+    bg: var(--color-neutral-700),
+    hover-bg: var(--color-neutral-900)
+    )
+);
+$border-width: 1px;
+
+
+
 $grid-breakpoints: (
   xs: 0,
   sm: 375px,
