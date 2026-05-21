@@ -1,0 +1,67 @@
+:root{
+      /*  文字系统 */
+  --line-height: 1.5;
+  --line-height-sm: 1.2;
+  
+  --display-1:font-size: 300px;
+  --display-2:font-size: 160px;
+
+  --heading-xxxlg:font-size: 80px;
+  --heading-xxlg:font-size: 48px;
+  --heading-xlg:font-size: 40px;
+  --heading-lg:font-size: 32px;
+  --heading-md:font-size: 28px;
+  --heading-sm:font-size: 24px;
+  --heading-xsm:font-size: 20px;
+  --heading-xxsm:font-size: 18px;
+  --heading-xxxsm:font-size: 16px;
+  --heading-xxxxsm:font-size: 14px;
+
+  --label-md:font-size: 16px;
+  --label-sm:font-size: 14px;
+  --label-xsm:font-size: 13px;
+
+  --paragraph-md:font-size: 16px;
+  --paragraph-sm:font-size: 14px;
+  --paragraph-xsm:font-size: 13px;
+  
+  --font-weight-regular:500;
+  --font-weight-bold: 700;
+}
+%dispaly {
+  font-weight: var(--font-weight-bold, 700);
+  line-height: var(--line-height-sm, 1.2);
+  letter-spacing: 0%;
+}
+%heading {
+  font-weight: var(--font-weight-bold, 700);
+  line-height: var(--line-height, 1.5);
+}
+%paragraph {
+  font-weight: var(--font-weight-regular, 500);
+  line-height: var(--line-height, 1.5);
+}
+.font-d{ font-size:var(--display-1); @extend %dispaly; }
+.display-1{ font-size:var(--display-1); @extend %dispaly; }
+.display-2{ font-size:var(--display-2); @extend %dispaly; }
+
+.font-heading{ font-size:var(--heading-xxxlg); @extend %dispaly; }
+.heading-xxxlg{ font-size:var(--heading-xxxlg); @extend %dispaly; }
+.heading-xxlg{ font-size:var(--heading-xxlg); @extend %dispaly; }
+.heading-xlg{ font-size:var(--heading-xlg); @extend %dispaly; }
+.heading-lg{ font-size:var(--heading-lg); @extend %heading; }
+.heading-md{ font-size:var(--heading-md); @extend %heading; }
+.heading-sm{ font-size:var(--heading-sm); @extend %heading; }
+.heading-xsm{ font-size:var(--heading-xsm); @extend %heading; }
+.heading-xxsm{ font-size:var(--heading-xxsm); @extend %heading; }
+.heading-xxxsm{ font-size:var(--heading-xxxsm); @extend %heading; }
+.heading-xxxxsm{ font-size:var(--heading-xxxxsm); @extend %heading; }
+
+.font-label{ font-size:var(--label-md); @extend %paragraph; }
+.label-md{ font-size:var(--label-md); @extend %paragraph; }
+.label-sm{ font-size:var(--label-sm); @extend %paragraph; }
+.label-xsm{ font-size:var(--label-xsm); @extend %paragraph; }
+
+.paragraph-md{ font-size:var(--paragraph-md); @extend %paragraph; }
+.paragraph-sm{ font-size:var(--paragraph-sm); @extend %paragraph; }
+.paragraph-xsm{ font-size:var(--paragraph-xsm); @extend %paragraph; } 

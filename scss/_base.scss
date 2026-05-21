@@ -13,12 +13,12 @@
 
   --color-dark-40a: rgba(0, 0, 0, 0.4);
   --color-dark-60a: rgba(0, 0, 0, 0.6);
-  /*  文字系统 */
-  --line-height: 1.5;
-  --line-height-sm: 1.2;
-  
-  --font-weight-regular:500;
-  --font-weight-bold: 700;
+/* 文字尺寸 */
+  @each $type, $properties in $Typography-types {
+    @each $size, $value in map-get($properties, size) {
+      --#{$type}-#{$size}: #{$value};
+    }
+  }
   /* grid */
   --gap:24px;
 }
@@ -26,7 +26,7 @@
   background-color: var(--color-primary-900);
   color:var(--color-neutral-0);
 }
-.contenter {
+.container {
   max-width: calc($max-width);
   margin: 0 auto; 
   padding: 0 1rem;
@@ -41,22 +41,80 @@
     width: calc((100% - var(--gap) * ($grid-coulmn - 1)) / $grid-coulmn * $i + var(--gap) * ($i - 1));
   }
 }
-@media (min-width:$max-width) {
-  .contenter{ padding: 0; }
-  :root{--gap: 12px;}
-  @for $i from 1 through $grid-coulmn {
-    .col-sm-#{$i} {
-      width: calc((100% - var(--gap) * ($grid-coulmn - 1)) / $grid-coulmn * $i + var(--gap) * ($i - 1));
-    } 
-  }
-}
+
+.jcfs{ justify-content: flex-start; }
+.jcfe{ justify-content: flex-end; }
 .jcc{ justify-content: center; }
 .jcsb{ justify-content: space-between; }
 .jcsa{ justify-content: space-around; }
-.jcfe{ justify-content: flex-end; }
-.jcfs{ justify-content: flex-start; }
+.jcse{ justify-content: space-evenly; }
+.aifs{ align-items: flex-start; }
+.aife{ align-items: flex-end; }
 .aic{ align-items: center; }
+.aib{ align-items: baseline; }
+.ais{ align-items: stretch; }
 
+@each $spacing, $value in $spacing-sizes {
+  .gap-#{$spacing} { gap: $value; }
+  .p-#{$spacing} { padding: $value; }
+  .pt-#{$spacing} { padding-top: $value; }
+  .pb-#{$spacing} { padding-bottom: $value; }
+  .pl-#{$spacing} { padding-left: $value; }
+  .pr-#{$spacing} { padding-right: $value; }
+  .px-#{$spacing} { padding-left: $value; padding-right: $value; }
+  .py-#{$spacing} { padding-top: $value; padding-bottom: $value; }
+
+  .m-#{$spacing} { margin: $value; }
+  .mt-#{$spacing} { margin-top: $value; }
+  .mb-#{$spacing} { margin-bottom: $value; }
+  .ml-#{$spacing} { margin-left: $value; }
+  .mr-#{$spacing} { margin-right: $value; }
+  .mx-#{$spacing} { margin-left: $value; margin-right: $value; }
+  .my-#{$spacing} { margin-top: $value; margin-bottom: $value; }
+}
+/* 螢幕變化 */
+@media (min-width: map-get($media-breakpoints, sm)) {
+  .container{ padding: 0 12px; }
+  :root{--gap: 12px;}
+}
+@each $media, $screen in $media-breakpoints {
+  @media (min-width: $screen) {
+    @for $i from 1 through $grid-coulmn {
+      .col-#{$media}-#{$i} {
+        width: calc((100% - var(--gap) * ($grid-coulmn - 1)) / $grid-coulmn * $i + var(--gap) * ($i - 1));
+      }
+    }
+      .jc-#{$media}-fs{ justify-content: flex-start; }
+      .jc-#{$media}-fe{ justify-content: flex-end; }
+      .jc-#{$media}-c{ justify-content: center; }
+      .jc-#{$media}-sb{ justify-content: space-between; }
+      .jc-#{$media}-sa{ justify-content: space-around; }
+      .jc-#{$media}-se{ justify-content: space-evenly; }
+      .ai-#{$media}-fs{ align-items: flex-start; }
+      .ai-#{$media}-fe{ align-items: flex-end; }
+      .ai-#{$media}-c{ align-items: center; }
+      .ai-#{$media}-b{ align-items: baseline; }
+      .ai-#{$media}-s{ align-items: stretch; }
+    @each $spacing, $value in $spacing-sizes {
+      .gap-#{$media}-#{$spacing} { gap: $value; }
+      .p-#{$media}-#{$spacing} { padding: $value; }
+      .pt-#{$media}-#{$spacing} { padding-top: $value; }
+      .pb-#{$media}-#{$spacing} { padding-bottom: $value; }
+      .pl-#{$media}-#{$spacing} { padding-left: $value; }
+      .pr-#{$media}-#{$spacing} { padding-right: $value; }
+      .px-#{$media}-#{$spacing} { padding-left: $value; padding-right: $value; }
+      .py-#{$media}-#{$spacing} { padding-top: $value; padding-bottom: $value; }
+
+      .m-#{$media}-#{$spacing} { margin: $value; }
+      .mt-#{$media}-#{$spacing} { margin-top: $value; }
+      .mb-#{$media}-#{$spacing} { margin-bottom: $value; }
+      .ml-#{$media}-#{$spacing} { margin-left: $value; }
+      .mr-#{$media}-#{$spacing} { margin-right: $value; }
+      .mx-#{$media}-#{$spacing} { margin-left: $value; margin-right: $value; }
+      .my-#{$media}-#{$spacing} { margin-top: $value; margin-bottom: $value; }
+    }
+  }
+}
 /* 操作類*/
 %btn{
   display: inline-block;
@@ -150,41 +208,30 @@ body{
   color: var(--color-neutral-500);
   line-height: var(--line-height);
 }
-%dispaly {
-  font-weight: var(--font-weight-bold, 700);
-  line-height: var(--line-height-sm, 1.2);
-  letter-spacing: 0%;
+@each $type, $properties in $Typography-types {
+  @each $size, $value in map-get($properties, size) {
+    .#{$type}-#{$size} {
+      font-size: $value;
+      letter-spacing: map-get($properties, letter-spacing);
+      line-height: map-get($properties, line-height);
+      font-weight: map-get($properties, font-weight);
+    }
+  }
 }
-%heading {
-  font-weight: var(--font-weight-bold, 700);
-  line-height: var(--line-height, 1.5);
+@each $media, $screen in $media-breakpoints {
+  @media (min-width: $screen) {
+    @each $type, $properties in $Typography-types {
+      @each $size, $value in map-get($properties, size) {
+        .#{$type}-#{$media}-#{$size} {
+          font-size: $value;
+          letter-spacing: map-get($properties, letter-spacing);
+          line-height: map-get($properties, line-height);
+          font-weight: map-get($properties, font-weight);
+        }
+      }
+    }
+  }
 }
-%paragraph {
-  font-weight: var(--font-weight-regular, 500);
-  line-height: var(--line-height, 1.5);
-}
-.display-1{ font-size: 300px; @extend %dispaly; }
-.display-2{ font-size: 160px; @extend %dispaly; }
-
-.heading-xxxlg{ font-size: 80px; @extend %dispaly; }
-.heading-xxlg{ font-size: 48px; @extend %dispaly; }
-.heading-xlg{ font-size: 40px; @extend %dispaly; }
-.heading-lg{ font-size: 32px; @extend %heading; }
-.heading-md{ font-size: 28px; @extend %heading; }
-.heading-sm{ font-size: 24px; @extend %heading; }
-.heading-xsm{ font-size: 20px; @extend %heading; }
-.heading-xxsm{ font-size: 18px; @extend %heading; }
-.heading-xxxsm{ font-size: 16px; @extend %heading; }
-.heading-xxxxsm{ font-size: 14px; @extend %heading; }
-
-.label-md{ font-size: 16px; @extend %paragraph; }
-.label-sm{ font-size: 14px; @extend %paragraph; }
-.label-xsm{ font-size: 13px; @extend %paragraph; }
-
-.paragraph-md{ font-size: 16px; @extend %paragraph; }
-.paragraph-sm{ font-size: 14px; @extend %paragraph; }
-.paragraph-xsm{ font-size: 13px; @extend %paragraph; } 
-
 /* google icon 預設設定 */
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
@@ -203,6 +250,15 @@ body{
   align-items: center;
   
   *{padding:12px 24px;}
+  
+  input{
+    background: inherit;
+    border: none;
+    color: inherit;
+    &:focus{ outline: none; }
+    &::placeholder{color:inherit;}
+  }
+
   .input-text-lg{
     @extend .paragraph-md;
     flex: auto;
@@ -223,5 +279,37 @@ body{
       @extend .label-sm;
       padding: 12px 20px;
     }
+  }
+}
+/* Display 展示類 */
+.logo{
+  width: 140px;
+  height: 40%;
+}
+@media (max-width: $max-width) {
+  .logo{
+    width: 112px;
+    height: 32px;
+  }
+}
+// icon
+// lable
+// illus
+/* Banner */
+.banner{
+  padding: 40px;
+  min-height: 440px;
+  color: var(--color-neutral-0);
+  background-color: var(--color-dark-60a);
+  background: url()cover/center no-repeat;
+  gap: 24px;
+  .banner-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .right{
+    padding:80px 40px;
   }
 }
