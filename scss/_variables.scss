@@ -2,25 +2,27 @@ $grid-coulmn: 12;
 $grid-gap: 24px;
 $max-width: 86px * 12 + $grid-gap * 11;
 $spacing-sizes:(
-  "0": 0,
-  "1": 4px,
-  "2": 8px,
-  "3": 12px,
-  "4": 16px,
-  "5": 20px,
-  "6": 24px,
-  "7": 32px,
-  "8": 48px,
-  "9": 64px,
-  "10": 80px,
-  "11": 96px
+  0: 0,
+  1: 4px,
+  2: 8px,
+  3: 12px,
+  4: 16px,
+  5: 20px,
+  6: 24px,
+  7: 32px,
+  8: 40px,
+  // "8": 48px,
+  9: 64px,
+  10: 80px,
+  11: 96px
 );
 $media-breakpoints: (
     //   "sm": $max-width * 0.25,
-    "sm": 375px,
-//  "md": 768px,
-//   "lg": 992px,
-//   "xl": 1200px,
+    // "sm": 375.5px,
+    //  "md": 768px,
+    //   "lg": 992px,
+    //   "xl": 1200px,
+    "xl": $max-width,
 //   "xxl": 1400px
 );
 $Typography-types: (
@@ -50,7 +52,7 @@ $Typography-types: (
     line-height: 1.3,
     font-weight: 700
   ),
-  "label": (
+  "lable": (
     size: (
         "md": 16px,
         "sm": 14px,

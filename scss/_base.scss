@@ -26,19 +26,24 @@
   background-color: var(--color-primary-900);
   color:var(--color-neutral-0);
 }
+.overflow-hidden{
+  overflow: hidden;
+}
 .container {
   max-width: calc($max-width);
-  margin: 0 auto; 
-  padding: 0 1rem;
+  margin: 0 auto;
 }
 .row{
   display: flex;
   flex-wrap: wrap;
   gap: calc((var(--gap) / 2));
 }
+[class^="col"]{
+  width: 100%;
+}
 @for $i from 1 through $grid-coulmn {
   .col-#{$i} {
-    width: calc((100% - var(--gap) * ($grid-coulmn - 1)) / $grid-coulmn * $i + var(--gap) * ($i - 1));
+    max-width: calc((100% - var(--gap) * ($grid-coulmn - 1)) / $grid-coulmn * $i + var(--gap) * ($i - 1));
   }
 }
 
@@ -73,7 +78,7 @@
   .my-#{$spacing} { margin-top: $value; margin-bottom: $value; }
 }
 /* 螢幕變化 */
-@media (min-width: map-get($media-breakpoints, sm)) {
+@media (min-width: map-get($media-breakpoints, xl)) {
   .container{ padding: 0 12px; }
   :root{--gap: 12px;}
 }
@@ -127,13 +132,13 @@
 }
 %btn-lg{
   @extend %btn;
-  @extend .label-md;
+  @extend .lable-md;
   padding: 12px 24px;
   gap: 8px;
 }
 %btn-md{
   @extend %btn;
-  @extend .label-sm;
+  @extend .lable-sm;
   padding: 12px 20px;
   gap: 8px;
 }
@@ -169,7 +174,7 @@
     @if $color == "neutral" {
       .btn-#{$size} {
         @extend %btn;
-        @extend .label-#{map-get($properties, lebel-size)};
+        @extend .lable-#{map-get($properties, lebel-size)};
         padding: map-get($properties, padding);
         background-color: map-get($value, bg);
         gap: 8px;
@@ -181,7 +186,7 @@
     } @else {
         .btn-#{$color}-#{$size} {
           @extend %btn;
-          @extend .label-#{map-get($properties, lebel-size)};
+          @extend .lable-#{map-get($properties, lebel-size)};
           padding: map-get($properties, padding);
           background-color: map-get($value, bg);
           @if $color == "white" {
@@ -211,19 +216,20 @@ body{
 @each $type, $properties in $Typography-types {
   @each $size, $value in map-get($properties, size) {
     .#{$type}-#{$size} {
-      font-size: $value;
+      font-size: var(--#{$type}-#{$size});
       letter-spacing: map-get($properties, letter-spacing);
       line-height: map-get($properties, line-height);
       font-weight: map-get($properties, font-weight);
     }
   }
 }
+// 響應式文字樣式
 @each $media, $screen in $media-breakpoints {
   @media (min-width: $screen) {
     @each $type, $properties in $Typography-types {
       @each $size, $value in map-get($properties, size) {
         .#{$type}-#{$media}-#{$size} {
-          font-size: $value;
+          font-size: var(--#{$type}-#{$size});
           letter-spacing: map-get($properties, letter-spacing);
           line-height: map-get($properties, line-height);
           font-weight: map-get($properties, font-weight);
@@ -248,36 +254,31 @@ body{
   gap: 8px;
   justify-content: space-between;
   align-items: center;
-  
-  *{padding:12px 24px;}
-  
+    
   input{
     background: inherit;
     border: none;
     color: inherit;
+    padding: map-get($spacing-sizes, 2) map-get($spacing-sizes, 3);
     &:focus{ outline: none; }
     &::placeholder{color:inherit;}
   }
-
-  .input-text-lg{
-    @extend .paragraph-md;
+  .input-text{
     flex: auto;
-    
-    &+.btn-white{
-      @extend .btn-white;
-      @extend .label-md;
-    }
-  }
+    @extend .paragraph-sm;}
   
-  .input-text-md{
-    @extend .paragraph-sm;
-    flex: auto;
-    padding: 8px 12px;
-    
-    &+.btn-white{
-      @extend .btn-white;
-      @extend .label-sm;
-      padding: 12px 20px;
+  button{
+    @extend .lable-sm;
+    padding: map-get($spacing-sizes, 3) map-get($spacing-sizes, 5);
+  }
+
+  @media (min-width: map-get($media-breakpoints, xl)) {
+    input{
+      @extend .paragraph-xl-md;
+      padding: map-get($spacing-sizes, 3) map-get($spacing-sizes, 6);}
+    button{
+      @extend .lable-xl-md;
+      padding: map-get($spacing-sizes, 3) map-get($spacing-sizes, 6);
     }
   }
 }
@@ -297,19 +298,29 @@ body{
 // illus
 /* Banner */
 .banner{
-  padding: 40px;
-  min-height: 440px;
   color: var(--color-neutral-0);
   background-color: var(--color-dark-60a);
-  background: url()cover/center no-repeat;
-  gap: 24px;
+  background: linear-gradient( var(--color-dark-60a), var(--color-dark-60a)), 
+  url('../img/mobile/subscription_bg.png')center/cover no-repeat;
   .banner-img{
     width: 100%;
+    min-height: 320px;
     height: 100%;
     object-fit: cover;
     object-position: center;
   }
   .right{
-    padding:80px 40px;
+    padding:map-get($spacing-sizes, 8) map-get($spacing-sizes, 3);
+  }
+}
+@media (min-width: map-get($media-breakpoints, xl)) {
+  .banner{
+    padding:0 map-get($spacing-sizes, 8);    
+    background: linear-gradient( var(--color-dark-60a), var(--color-dark-60a)), 
+    url('../img/subscription_bg.png')center/cover no-repeat;
+    .banner-img{ min-height: 440px; }
+    .right{
+      padding:map-get($spacing-sizes, 10) map-get($spacing-sizes, 8);
+    }
   }
 }
