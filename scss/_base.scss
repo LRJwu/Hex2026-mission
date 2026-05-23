@@ -356,7 +356,7 @@ body{
     height: 133px;
     padding: map-get($spacing-sizes, 3);
     gap: map-get($spacing-sizes, 2);
-    background-color: var(--color-neutral-50);
+    background-color: var(--color-primary-50);
     color: var(--color-neutral-700);
     @extend .paragraph-sm;
     display: flex;
@@ -424,5 +424,5 @@ body{
 /* project */
 .project-card{
   background-color: var(--color-primary-50);
-  
+
 }
