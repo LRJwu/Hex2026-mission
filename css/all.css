@@ -15,7 +15,7 @@ fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
+menu, nav, output, ruby, section, .banner .right, summary,
 time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -27,7 +27,7 @@ time, mark, audio, video {
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+footer, header, hgroup, menu, nav, section, .banner .right {
   display: block;
 }
 
@@ -117,9 +117,28 @@ button {
   overflow: hidden;
 }
 
+.scroll-x {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+section, .banner .right {
+  padding: 40px 12px;
+}
+@media (min-width: 1296px) {
+  section, .banner .right {
+    padding: 80px 40px;
+  }
+}
+
 .container {
   max-width: 1296px;
   margin: 0 auto;
+  padding: 0 12px;
+}
+
+.flex {
+  display: flex;
 }
 
 .row {
@@ -928,74 +947,74 @@ button {
   margin-bottom: 80px;
 }
 
-.gap-11 {
-  gap: 96px;
+.gap-auto {
+  gap: auto;
 }
 
-.p-11 {
-  padding: 96px;
+.p-auto {
+  padding: auto;
 }
 
-.pt-11 {
-  padding-top: 96px;
+.pt-auto {
+  padding-top: auto;
 }
 
-.pb-11 {
-  padding-bottom: 96px;
+.pb-auto {
+  padding-bottom: auto;
 }
 
-.pl-11 {
-  padding-left: 96px;
+.pl-auto {
+  padding-left: auto;
 }
 
-.pr-11 {
-  padding-right: 96px;
+.pr-auto {
+  padding-right: auto;
 }
 
-.px-11 {
-  padding-left: 96px;
-  padding-right: 96px;
+.px-auto {
+  padding-left: auto;
+  padding-right: auto;
 }
 
-.py-11 {
-  padding-top: 96px;
-  padding-bottom: 96px;
+.py-auto {
+  padding-top: auto;
+  padding-bottom: auto;
 }
 
-.m-11 {
-  margin: 96px;
+.m-auto {
+  margin: auto;
 }
 
-.mt-11 {
-  margin-top: 96px;
+.mt-auto {
+  margin-top: auto;
 }
 
-.mb-11 {
-  margin-bottom: 96px;
+.mb-auto {
+  margin-bottom: auto;
 }
 
-.ml-11 {
-  margin-left: 96px;
+.ml-auto {
+  margin-left: auto;
 }
 
-.mr-11 {
-  margin-right: 96px;
+.mr-auto {
+  margin-right: auto;
 }
 
-.mx-11 {
-  margin-left: 96px;
-  margin-right: 96px;
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.my-11 {
-  margin-top: 96px;
-  margin-bottom: 96px;
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 /* 螢幕變化 */
 @media (min-width: 1296px) {
   .container {
-    padding: 0 12px;
+    padding: 0;
   }
   :root {
     --gap: 12px;
@@ -1610,54 +1629,54 @@ button {
     margin-top: 80px;
     margin-bottom: 80px;
   }
-  .gap-xl-11 {
-    gap: 96px;
+  .gap-xl-auto {
+    gap: auto;
   }
-  .p-xl-11 {
-    padding: 96px;
+  .p-xl-auto {
+    padding: auto;
   }
-  .pt-xl-11 {
-    padding-top: 96px;
+  .pt-xl-auto {
+    padding-top: auto;
   }
-  .pb-xl-11 {
-    padding-bottom: 96px;
+  .pb-xl-auto {
+    padding-bottom: auto;
   }
-  .pl-xl-11 {
-    padding-left: 96px;
+  .pl-xl-auto {
+    padding-left: auto;
   }
-  .pr-xl-11 {
-    padding-right: 96px;
+  .pr-xl-auto {
+    padding-right: auto;
   }
-  .px-xl-11 {
-    padding-left: 96px;
-    padding-right: 96px;
+  .px-xl-auto {
+    padding-left: auto;
+    padding-right: auto;
   }
-  .py-xl-11 {
-    padding-top: 96px;
-    padding-bottom: 96px;
+  .py-xl-auto {
+    padding-top: auto;
+    padding-bottom: auto;
   }
-  .m-xl-11 {
-    margin: 96px;
+  .m-xl-auto {
+    margin: auto;
   }
-  .mt-xl-11 {
-    margin-top: 96px;
+  .mt-xl-auto {
+    margin-top: auto;
   }
-  .mb-xl-11 {
-    margin-bottom: 96px;
+  .mb-xl-auto {
+    margin-bottom: auto;
   }
-  .ml-xl-11 {
-    margin-left: 96px;
+  .ml-xl-auto {
+    margin-left: auto;
   }
-  .mr-xl-11 {
-    margin-right: 96px;
+  .mr-xl-auto {
+    margin-right: auto;
   }
-  .mx-xl-11 {
-    margin-left: 96px;
-    margin-right: 96px;
+  .mx-xl-auto {
+    margin-left: auto;
+    margin-right: auto;
   }
-  .my-xl-11 {
-    margin-top: 96px;
-    margin-bottom: 96px;
+  .my-xl-auto {
+    margin-top: auto;
+    margin-bottom: auto;
   }
 }
 /* 操作類*/
@@ -1789,240 +1808,252 @@ body {
   line-height: var(--line-height);
 }
 
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
 .display-1 {
   font-size: var(--display-1);
   letter-spacing: 0%;
-  line-height: 1.2;
   font-weight: 700;
+  line-height: 1.2;
 }
 
 .display-2 {
   font-size: var(--display-2);
   letter-spacing: 0%;
-  line-height: 1.2;
   font-weight: 700;
+  line-height: 1.2;
 }
 
 .heading-xxxlg {
   font-size: var(--heading-xxxlg);
   letter-spacing: 2%;
-  line-height: 1.3;
   font-weight: 700;
+  line-height: 1.2;
 }
 
 .heading-xxlg {
   font-size: var(--heading-xxlg);
   letter-spacing: 2%;
-  line-height: 1.3;
   font-weight: 700;
+  line-height: 1.2;
 }
 
 .heading-xlg {
   font-size: var(--heading-xlg);
   letter-spacing: 2%;
-  line-height: 1.3;
   font-weight: 700;
+  line-height: 1.2;
 }
 
 .heading-lg {
   font-size: var(--heading-lg);
   letter-spacing: 2%;
-  line-height: 1.3;
   font-weight: 700;
+  line-height: 1.5;
 }
 
 .heading-md {
   font-size: var(--heading-md);
   letter-spacing: 2%;
-  line-height: 1.3;
   font-weight: 700;
+  line-height: 1.5;
 }
 
-.heading-sm {
+.heading-sm, .services .service-card .card-title span {
   font-size: var(--heading-sm);
   letter-spacing: 2%;
-  line-height: 1.3;
   font-weight: 700;
+  line-height: 1.5;
 }
 
 .heading-xsm {
   font-size: var(--heading-xsm);
   letter-spacing: 2%;
-  line-height: 1.3;
   font-weight: 700;
+  line-height: 1.5;
 }
 
 .heading-xxsm {
   font-size: var(--heading-xxsm);
   letter-spacing: 2%;
-  line-height: 1.3;
   font-weight: 700;
+  line-height: 1.5;
 }
 
 .heading-xxxsm {
   font-size: var(--heading-xxxsm);
   letter-spacing: 2%;
-  line-height: 1.3;
   font-weight: 700;
+  line-height: 1.5;
 }
 
-.heading-xxxxsm {
+.heading-xxxxsm, .services .service-card .card-title {
   font-size: var(--heading-xxxxsm);
   letter-spacing: 2%;
-  line-height: 1.3;
   font-weight: 700;
+  line-height: 1.5;
 }
 
 .lable-md, .btn-white-lg, .btn-primary-lg, .btn-lg {
   font-size: var(--lable-md);
   letter-spacing: 2%;
-  line-height: 1.5;
   font-weight: 500;
+  line-height: 1.5;
 }
 
 .lable-sm, .text-field button, .btn-white-md, .btn-primary-md, .btn-md {
   font-size: var(--lable-sm);
   letter-spacing: 2%;
-  line-height: 1.5;
   font-weight: 500;
+  line-height: 1.5;
 }
 
 .lable-xsm {
   font-size: var(--lable-xsm);
   letter-spacing: 2%;
-  line-height: 1.5;
   font-weight: 500;
+  line-height: 1.5;
 }
 
 .paragraph-md {
   font-size: var(--paragraph-md);
   letter-spacing: 2%;
-  line-height: 1.5;
   font-weight: 500;
+  line-height: 1.5;
 }
 
-.paragraph-sm, .text-field .input-text {
+.paragraph-sm, .services .service-card .bottom .card-description, .services .service-card, .text-field .input-text {
   font-size: var(--paragraph-sm);
   letter-spacing: 2%;
-  line-height: 1.5;
   font-weight: 500;
+  line-height: 1.5;
 }
 
 .paragraph-xsm {
   font-size: var(--paragraph-xsm);
   letter-spacing: 2%;
-  line-height: 1.5;
   font-weight: 500;
+  line-height: 1.5;
 }
 
 @media (min-width: 1296px) {
   .display-xl-1 {
     font-size: var(--display-1);
     letter-spacing: 0%;
-    line-height: 1.2;
     font-weight: 700;
+    line-height: 1.2;
   }
   .display-xl-2 {
     font-size: var(--display-2);
     letter-spacing: 0%;
-    line-height: 1.2;
     font-weight: 700;
+    line-height: 1.2;
   }
   .heading-xl-xxxlg {
     font-size: var(--heading-xxxlg);
     letter-spacing: 2%;
-    line-height: 1.3;
     font-weight: 700;
+    line-height: 1.2;
   }
   .heading-xl-xxlg {
     font-size: var(--heading-xxlg);
     letter-spacing: 2%;
-    line-height: 1.3;
     font-weight: 700;
+    line-height: 1.2;
   }
   .heading-xl-xlg {
     font-size: var(--heading-xlg);
     letter-spacing: 2%;
-    line-height: 1.3;
     font-weight: 700;
+    line-height: 1.2;
   }
   .heading-xl-lg {
     font-size: var(--heading-lg);
     letter-spacing: 2%;
-    line-height: 1.3;
     font-weight: 700;
+    line-height: 1.5;
   }
-  .heading-xl-md {
+  .heading-xl-md, .services .service-card .card-title span {
     font-size: var(--heading-md);
     letter-spacing: 2%;
-    line-height: 1.3;
     font-weight: 700;
+    line-height: 1.5;
   }
   .heading-xl-sm {
     font-size: var(--heading-sm);
     letter-spacing: 2%;
-    line-height: 1.3;
     font-weight: 700;
+    line-height: 1.5;
   }
   .heading-xl-xsm {
     font-size: var(--heading-xsm);
     letter-spacing: 2%;
-    line-height: 1.3;
     font-weight: 700;
+    line-height: 1.5;
   }
   .heading-xl-xxsm {
     font-size: var(--heading-xxsm);
     letter-spacing: 2%;
-    line-height: 1.3;
     font-weight: 700;
+    line-height: 1.5;
   }
-  .heading-xl-xxxsm {
+  .heading-xl-xxxsm, .services .service-card .card-title {
     font-size: var(--heading-xxxsm);
     letter-spacing: 2%;
-    line-height: 1.3;
     font-weight: 700;
+    line-height: 1.5;
   }
   .heading-xl-xxxxsm {
     font-size: var(--heading-xxxxsm);
     letter-spacing: 2%;
-    line-height: 1.3;
     font-weight: 700;
+    line-height: 1.5;
   }
   .lable-xl-md, .text-field button {
     font-size: var(--lable-md);
     letter-spacing: 2%;
-    line-height: 1.5;
     font-weight: 500;
+    line-height: 1.5;
   }
   .lable-xl-sm {
     font-size: var(--lable-sm);
     letter-spacing: 2%;
-    line-height: 1.5;
     font-weight: 500;
+    line-height: 1.5;
   }
   .lable-xl-xsm {
     font-size: var(--lable-xsm);
     letter-spacing: 2%;
-    line-height: 1.5;
     font-weight: 500;
+    line-height: 1.5;
   }
-  .paragraph-xl-md, .text-field input {
+  .paragraph-xl-md, .services .service-card .bottom .card-description, .text-field input {
     font-size: var(--paragraph-md);
     letter-spacing: 2%;
-    line-height: 1.5;
     font-weight: 500;
+    line-height: 1.5;
   }
   .paragraph-xl-sm {
     font-size: var(--paragraph-sm);
     letter-spacing: 2%;
-    line-height: 1.5;
     font-weight: 500;
+    line-height: 1.5;
   }
   .paragraph-xl-xsm {
     font-size: var(--paragraph-xsm);
     letter-spacing: 2%;
-    line-height: 1.5;
     font-weight: 500;
+    line-height: 1.5;
   }
 }
 /* google icon 預設設定 */
@@ -2099,10 +2130,6 @@ body {
   -o-object-position: center;
      object-position: center;
 }
-.banner .right {
-  padding: 40px 12px;
-}
-
 @media (min-width: 1296px) {
   .banner {
     padding: 0 40px;
@@ -2111,7 +2138,65 @@ body {
   .banner .banner-img {
     min-height: 440px;
   }
-  .banner .right {
-    padding: 80px 40px;
+}
+/* SERVICES */
+.services .service-card {
+  width: 260px;
+  height: 133px;
+  padding: 12px;
+  gap: 8px;
+  background-color: var(--color-neutral-50);
+  color: var(--color-neutral-700);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+}
+.services .service-card .card-title {
+  line-height: 1.5;
+}
+.services .service-card .card-title span {
+  display: block;
+  line-height: 1.5;
+}
+.services .service-card .material-symbols-outlined {
+  margin-left: auto;
+  font-size: 10px;
+}
+.services .service-card .material-symbols-outlined.btn {
+  font-size: 20px;
+}
+.services .service-card .bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 8px;
+  width: 100%;
+}
+.services .service-card .bottom .card-description {
+  max-width: 184px;
+}
+@media (min-width: 1296px) {
+  .services .service-card {
+    width: 306px;
+    height: 174px;
+    padding: 24px;
+    gap: 12px;
   }
+  .services .service-card .material-symbols-outlined {
+    font-size: 28px;
+  }
+  .services .service-card .material-symbols-outlined.btn {
+    font-size: 24px;
+  }
+  .services .service-card .bottom {
+    gap: 12px;
+  }
+  .services .service-card .bottom .card-description {
+    max-width: 198px;
+  }
+}
+
+/* project */
+.project-card {
+  background-color: var(--color-primary-50);
 }/*# sourceMappingURL=all.css.map */

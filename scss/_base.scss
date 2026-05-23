@@ -29,10 +29,22 @@
 .overflow-hidden{
   overflow: hidden;
 }
+.scroll-x{
+  max-width: 100%;
+  overflow-x: auto;
+}
+section{
+  padding:map-get($spacing-sizes, 8) map-get($spacing-sizes, 3);
+  @media (min-width: map-get($media-breakpoints, xl)) {
+    padding:map-get($spacing-sizes, 10) map-get($spacing-sizes, 8);
+  }
+}
 .container {
   max-width: calc($max-width);
   margin: 0 auto;
+  padding: 0 12px; 
 }
+.flex{ display: flex; }
 .row{
   display: flex;
   flex-wrap: wrap;
@@ -79,7 +91,7 @@
 }
 /* 螢幕變化 */
 @media (min-width: map-get($media-breakpoints, xl)) {
-  .container{ padding: 0 12px; }
+  .container{ padding: 0; }
   :root{--gap: 12px;}
 }
 @each $media, $screen in $media-breakpoints {
@@ -213,13 +225,20 @@ body{
   color: var(--color-neutral-500);
   line-height: var(--line-height);
 }
+.text-center{ text-align: center; }
+.text-left{ text-align: left; }
+.text-right{ text-align: right; }
 @each $type, $properties in $Typography-types {
   @each $size, $value in map-get($properties, size) {
     .#{$type}-#{$size} {
       font-size: var(--#{$type}-#{$size});
       letter-spacing: map-get($properties, letter-spacing);
-      line-height: map-get($properties, line-height);
       font-weight: map-get($properties, font-weight);
+      @if string.index($size, "xl") {
+        line-height: map-get($properties, lh);
+      } @else {
+        line-height: map-get($properties, line-height);
+      }
     }
   }
 }
@@ -231,8 +250,12 @@ body{
         .#{$type}-#{$media}-#{$size} {
           font-size: var(--#{$type}-#{$size});
           letter-spacing: map-get($properties, letter-spacing);
-          line-height: map-get($properties, line-height);
           font-weight: map-get($properties, font-weight);
+          @if string.index($size, "xl") {
+            line-height: map-get($properties, lh);
+          } @else {
+            line-height: map-get($properties, line-height);
+          }
         }
       }
     }
@@ -243,6 +266,8 @@ body{
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
   font-size: 12px;
 }
+
+
 /* text field */
 .text-field {
   display: block;
@@ -310,7 +335,7 @@ body{
     object-position: center;
   }
   .right{
-    padding:map-get($spacing-sizes, 8) map-get($spacing-sizes, 3);
+    @extend section;
   }
 }
 @media (min-width: map-get($media-breakpoints, xl)) {
@@ -320,7 +345,84 @@ body{
     url('../img/subscription_bg.png')center/cover no-repeat;
     .banner-img{ min-height: 440px; }
     .right{
-      padding:map-get($spacing-sizes, 10) map-get($spacing-sizes, 8);
+      @extend section;
     }
   }
+}
+/* SERVICES */
+.services{
+  .service-card{
+    width: 260px;
+    height: 133px;
+    padding: map-get($spacing-sizes, 3);
+    gap: map-get($spacing-sizes, 2);
+    background-color: var(--color-neutral-50);
+    color: var(--color-neutral-700);
+    @extend .paragraph-sm;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    .card-title{
+      @extend .heading-xxxxsm;
+      line-height: 1.5;
+      span{
+        @extend .heading-sm;
+        display: block;
+        line-height: 1.5;
+      }
+    }
+    .material-symbols-outlined{
+      margin-left: auto;
+      font-size: 10px;
+      &.btn{
+        font-size: 20px;
+      }
+    }
+    .bottom{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: map-get($spacing-sizes, 2);
+      width: 100%;
+      .card-description{
+        max-width: 184px;
+        @extend .paragraph-sm;
+      }
+      // .material-symbols-outlined{
+      //   font-size: 10px;
+      //   &.btn{
+      //     font-size: 20px;
+      //   }
+      // }
+    }
+  }
+  @media (min-width: map-get($media-breakpoints, xl)) {
+    .service-card{
+      width: 306px;
+      height: 174px;
+      padding: map-get($spacing-sizes, 6);
+      gap: map-get($spacing-sizes, 3);
+      .card-title{
+        @extend .heading-xl-xxxsm;
+        span{ @extend .heading-xl-md;}
+      }
+      .material-symbols-outlined{
+        font-size: 28px;
+        &.btn{font-size: 24px;}
+      }
+      .bottom{
+        gap: map-get($spacing-sizes, 3);
+        .card-description{
+          max-width: 198px;
+          @extend .paragraph-xl-md;
+        }
+
+      }
+    }
+  }
+}
+/* project */
+.project-card{
+  background-color: var(--color-primary-50);
+  
 }
