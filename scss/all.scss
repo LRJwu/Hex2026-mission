@@ -1,12 +1,10 @@
 @use 'sass:string';
-@import "_reset.scss";
-@import "_variables.scss";
-@import "_base.scss";
+@use "sass:map";
+@use "_reset";
+@use "_color";
+@use "_fonts";
+@use "_grid";
+@use "_link";
 
-// @for $i from 1 through 3 {
-
-//     div *:nth-child(#{$i}) {
-//         border: 1px solid var(--color-neutral-900);
-//         background-color: nth(map-values($colors), random(length($colors))); // 随机背景颜色
-//     }
-// }
+@use "_base";
+@use "_index";

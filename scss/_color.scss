@@ -1,0 +1,43 @@
+$color:(
+    "primary":(
+        50: #FDF7F1,
+        100: #FDE6CF,
+        500:#F5B87B,
+        900:#24140B,
+    ),
+    "neutral":(
+        0: #FFFFFF,
+        // 50: #F9F9F9,
+        // 100: #F2F2F2,
+        // 200: #E5E5E5,
+        // 300: #D9D9D9,
+        // 400: #B3B3B3,
+        500: #737373,
+        // 600: #4D4D4D,
+        700: #404040,
+        // 800: #1A1A1A,
+        900: #1e1e1e
+    ),
+    "dark":(
+        40a: rgba(0, 0, 0, 0.4),
+        60a: rgba(0, 0, 0, 0.6)
+    )
+);
+/* 以下為 color樣式 */
+
+:root {
+    @each $color-name, $shades in $color {
+        @each $shade, $value in $shades {
+            --color-#{$color-name}-#{$shade}: #{$value};
+        }
+    }
+}
+.bg-light{
+    background-color: var(--color-primary-50);
+    color: var(--color-neutral-700);
+}
+.bg-primary{
+    background-color: var(--color-primary-900);
+    color:var(--color-neutral-0);
+}    
+/* －－－以上為 color樣式 */

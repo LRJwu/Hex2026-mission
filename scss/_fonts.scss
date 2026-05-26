@@ -1,0 +1,142 @@
+@use "sass:map";
+@use "sass:string";
+@use "sass:list";
+@use "_grid" as grid;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+$Typography-types: "display", "heading", "label", "paragraph";
+$lh: 1.2, 1.5;
+$weight: 700, 500;
+$letter-space: 0%, 2%;
+$ty:(
+    "display":   ( size: ( "1": 300px, "2": 160px ), ),
+    "heading":   ( size: ( "xxxlg":80px, "xxlg":48px, "xlg":40px, "lg":32px, "md":28px, "sm":24px, "xsm":20px, "xxsm":18px, "xxxsm":16px, "xxxxsm":14px ), ),
+    "label":     ( size: ( "md": 16px, "sm": 14px, "xsm": 13px ), ),
+    "paragraph": ( size: ( "md": 16px, "sm": 14px, "xsm": 13px ), )
+);
+$css:(
+    "xl":(
+        list.nth($lh, 1),
+        list.nth($weight, 1),
+        list.nth($letter-space, 1)
+    ),
+    "lg":(
+        list.nth($lh, 1),
+        list.nth($weight, 1),
+        list.nth($letter-space, 2)
+    ),
+    "md":(
+        list.nth($lh, 2),
+        list.nth($weight, 1),
+        list.nth($letter-space, 2)
+    ),
+    "sm":(
+        list.nth($lh, 2),
+        list.nth($weight, 2),
+        list.nth($letter-space, 2)
+    )
+);
+/* 以下爲 font樣式 */
+@mixin same-css($type) {
+    font-weight: list.nth(map.get($css, $type), 2);
+    line-height: list.nth(map.get($css, $type), 1);
+    letter-spacing: list.nth(map.get($css, $type), 3);
+}
+@mixin ty-same($screen: null) {
+    @each $type, $value in $css {
+        @if $screen != null {
+            %Ty-#{$screen}-#{$type}{
+                @include same-css($type);
+            }
+        } @else {
+        %Ty-#{$type} {
+            @include same-css($type);
+            }
+        }
+    }
+}
+@mixin generate-typography-classes($screen: null) {
+    @each $type in $Typography-types {
+        @each $size, $value in map.get(map.get($ty, $type), size) {
+            $class-name: ".#{$type}-#{$size}";
+            @if $screen != null {
+                $class-name: ".#{$type}-#{$screen}-#{$size}";
+            }
+            #{$class-name} {
+                font-size: var(--#{$type}-#{$size});
+                @if $screen == null {
+                    @if $type == "display" {
+                        @extend %Ty-xl;
+                    } @else if $type == "heading" {
+                        @if string.index($size, "xlg") {@extend %Ty-lg;}
+                        @else{ @extend %Ty-md; }
+                    } @else if $type == "label" {
+                        @extend %Ty-sm;
+                    } @else if $type == "paragraph"{
+                        @extend %Ty-sm;
+                    } @else {
+                        @warn "沒有這個 Typography 類型: #{$type}";
+                    }
+                }
+                @else{
+                    @if $type == "display" {
+                        @extend %Ty-#{$screen}-xl;
+                    } @else if $type == "heading" {
+                        @if string.index($size, "xlg") {@extend %Ty-#{$screen}-lg;}
+                        @else{ @extend %Ty-#{$screen}-md; }
+                    } @else if $type == "label" {
+                        @extend %Ty-#{$screen}-sm;
+                    } @else if $type == "paragraph"{
+                        @extend %Ty-#{$screen}-sm;
+                    } @else {
+                        @warn "在這個#{$screen}尺寸下：沒有這個 Typography 類型: #{$type}";
+                    }
+                }
+            }
+        }
+    }
+}
+@mixin copyTyCSS($type, $size) {
+    font-size: var(--#{$type}-#{$size});
+    @if $type == "display" {
+        @include same-css(xl);
+    } @else if $type == "heading" {
+        @if string.index($size, "xlg") {@include same-css(lg);}
+        @else{ @include same-css(md); }
+    } @else if $type == "label" {
+        @include same-css(sm);
+    } @else if $type == "paragraph"{
+        @include same-css(sm);
+    }
+}
+
+:root {
+    @each $type in $Typography-types {
+        @each $size, $value in map.get(map.get($ty, $type), size) {
+            --#{$type}-#{$size}: #{$value};
+        }
+    }
+};
+body {
+    font-family: "Noto Sans", sans-serif;
+};
+/* google icon 預設設定 */
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    font-size: inherit;
+}
+.text-center{ text-align: center; }
+.text-left{ text-align: left; }
+.text-right{ text-align: right; }
+@include ty-same;
+@include generate-typography-classes;
+// 響應式文字樣式
+@each $media, $screen in grid.$media-breakpoints {
+    @media (min-width: $screen) {
+        .text-#{$media}-center{ text-align: center; }
+        .text-#{$media}-left{ text-align: left; }
+        .text-#{$media}-right{ text-align: right; }
+        @include ty-same($media);
+        @include generate-typography-classes($media);
+    }
+}
+/* －－－以上為 font樣式 */

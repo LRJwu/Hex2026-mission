@@ -49,8 +49,9 @@ table {
 /* 以上為reset.css的內容，以下為自定義的樣式 */
 *,*::before,*::after { box-sizing: border-box;}
 img { vertical-align: middle; min-width: 100%;}
-a{
-  text-decoration: none;
-  color: inherit;
+a,i,s,u{
+	font-style: normal;
+	text-decoration: none;
+  	color: inherit;
 }
 button{border: 0;}

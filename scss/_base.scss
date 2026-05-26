@@ -1,309 +1,52 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@use "sass:map";
+@use "sass:string";
+@use "_grid" as grid;
+@use "_fonts" as fonts;
+/* 以下為一些全局的樣式，包含一些常用的 class */
+/* 操作類型 */
 :root {
-  /* 颜色系统 */
-  --color-primary-50: #FDF7F1;
-  --color-primary-100: #FDE6CF;
-  --color-primary-500:#F5B87B;
-  --color-primary-900:#24140B;
-
-  --color-neutral-0:#FFFFFF;
-  --color-neutral-500:#737373;
-  --color-neutral-700:#404040;
-  --color-neutral-900:#1E1E1E;
-
-  --color-dark-40a: rgba(0, 0, 0, 0.4);
-  --color-dark-60a: rgba(0, 0, 0, 0.6);
-/* 文字尺寸 */
-  @each $type, $properties in $Typography-types {
-    @each $size, $value in map-get($properties, size) {
-      --#{$type}-#{$size}: #{$value};
-    }
-  }
-  /* grid */
-  --gap:24px;
+  --TF-radius: 32px;
 }
-.bg-primary{
-  background-color: var(--color-primary-900);
-  color:var(--color-neutral-0);
-}
-.overflow-hidden{
-  overflow: hidden;
-}
-.scroll-x{
-  max-width: 100%;
-  overflow-x: auto;
-}
-section{
-  padding:map-get($spacing-sizes, 8) map-get($spacing-sizes, 3);
-  @media (min-width: map-get($media-breakpoints, xl)) {
-    padding:map-get($spacing-sizes, 10) map-get($spacing-sizes, 8);
-  }
-}
-.container {
-  max-width: calc($max-width);
-  margin: 0 auto;
-  padding: 0 12px; 
-}
-.flex{ display: flex; }
-.row{
-  display: flex;
-  flex-wrap: wrap;
-  gap: calc((var(--gap) / 2));
-}
-[class^="col"]{
-  width: 100%;
-}
-@for $i from 1 through $grid-coulmn {
-  .col-#{$i} {
-    max-width: calc((100% - var(--gap) * ($grid-coulmn - 1)) / $grid-coulmn * $i + var(--gap) * ($i - 1));
-  }
-}
-
-.jcfs{ justify-content: flex-start; }
-.jcfe{ justify-content: flex-end; }
-.jcc{ justify-content: center; }
-.jcsb{ justify-content: space-between; }
-.jcsa{ justify-content: space-around; }
-.jcse{ justify-content: space-evenly; }
-.aifs{ align-items: flex-start; }
-.aife{ align-items: flex-end; }
-.aic{ align-items: center; }
-.aib{ align-items: baseline; }
-.ais{ align-items: stretch; }
-
-@each $spacing, $value in $spacing-sizes {
-  .gap-#{$spacing} { gap: $value; }
-  .p-#{$spacing} { padding: $value; }
-  .pt-#{$spacing} { padding-top: $value; }
-  .pb-#{$spacing} { padding-bottom: $value; }
-  .pl-#{$spacing} { padding-left: $value; }
-  .pr-#{$spacing} { padding-right: $value; }
-  .px-#{$spacing} { padding-left: $value; padding-right: $value; }
-  .py-#{$spacing} { padding-top: $value; padding-bottom: $value; }
-
-  .m-#{$spacing} { margin: $value; }
-  .mt-#{$spacing} { margin-top: $value; }
-  .mb-#{$spacing} { margin-bottom: $value; }
-  .ml-#{$spacing} { margin-left: $value; }
-  .mr-#{$spacing} { margin-right: $value; }
-  .mx-#{$spacing} { margin-left: $value; margin-right: $value; }
-  .my-#{$spacing} { margin-top: $value; margin-bottom: $value; }
-}
-/* 螢幕變化 */
-@media (min-width: map-get($media-breakpoints, xl)) {
-  .container{ padding: 0; }
-  :root{--gap: 12px;}
-}
-@each $media, $screen in $media-breakpoints {
-  @media (min-width: $screen) {
-    @for $i from 1 through $grid-coulmn {
-      .col-#{$media}-#{$i} {
-        width: calc((100% - var(--gap) * ($grid-coulmn - 1)) / $grid-coulmn * $i + var(--gap) * ($i - 1));
-      }
-    }
-      .jc-#{$media}-fs{ justify-content: flex-start; }
-      .jc-#{$media}-fe{ justify-content: flex-end; }
-      .jc-#{$media}-c{ justify-content: center; }
-      .jc-#{$media}-sb{ justify-content: space-between; }
-      .jc-#{$media}-sa{ justify-content: space-around; }
-      .jc-#{$media}-se{ justify-content: space-evenly; }
-      .ai-#{$media}-fs{ align-items: flex-start; }
-      .ai-#{$media}-fe{ align-items: flex-end; }
-      .ai-#{$media}-c{ align-items: center; }
-      .ai-#{$media}-b{ align-items: baseline; }
-      .ai-#{$media}-s{ align-items: stretch; }
-    @each $spacing, $value in $spacing-sizes {
-      .gap-#{$media}-#{$spacing} { gap: $value; }
-      .p-#{$media}-#{$spacing} { padding: $value; }
-      .pt-#{$media}-#{$spacing} { padding-top: $value; }
-      .pb-#{$media}-#{$spacing} { padding-bottom: $value; }
-      .pl-#{$media}-#{$spacing} { padding-left: $value; }
-      .pr-#{$media}-#{$spacing} { padding-right: $value; }
-      .px-#{$media}-#{$spacing} { padding-left: $value; padding-right: $value; }
-      .py-#{$media}-#{$spacing} { padding-top: $value; padding-bottom: $value; }
-
-      .m-#{$media}-#{$spacing} { margin: $value; }
-      .mt-#{$media}-#{$spacing} { margin-top: $value; }
-      .mb-#{$media}-#{$spacing} { margin-bottom: $value; }
-      .ml-#{$media}-#{$spacing} { margin-left: $value; }
-      .mr-#{$media}-#{$spacing} { margin-right: $value; }
-      .mx-#{$media}-#{$spacing} { margin-left: $value; margin-right: $value; }
-      .my-#{$media}-#{$spacing} { margin-top: $value; margin-bottom: $value; }
-    }
-  }
-}
-/* 操作類*/
-%btn{
-  display: inline-block;
-  border-radius: 999px;
-  color: var(--color-neutral-0);
-  // padding: 12px;
-}
-%btn-hover{
-  transition: all 0.3s ease;
-}
-%btn-lg{
-  @extend %btn;
-  @extend .lable-md;
-  padding: 12px 24px;
-  gap: 8px;
-}
-%btn-md{
-  @extend %btn;
-  @extend .lable-sm;
-  padding: 12px 20px;
-  gap: 8px;
-}
-
-.btn{
-  @extend %btn;
-  background: var(--color-neutral-700);
-  &.material-symbols-outlined{
-      padding: 12px;
-    }
-}
-.btn:hover {
-  background-color: var(--color-neutral-900);
-  @extend %btn-hover;
-}
-@each $color, $value in $btn-colors {
-  .btn-#{$color} {
-    @extend %btn;
-    background-color: map-get($value, bg);
-    @if $color == "white" {
-      color: map-get($value, color);
-    }
-    &.material-symbols-outlined{
-      padding: 12px;
-    }
-  }
-  .btn-#{$color}:hover {
-    background-color: map-get($value, hover-bg);
-    @extend %btn-hover;
-  }
-  //以下尺寸變化
-  @each $size, $properties in $btn-sizes {
-    @if $color == "neutral" {
-      .btn-#{$size} {
-        @extend %btn;
-        @extend .lable-#{map-get($properties, lebel-size)};
-        padding: map-get($properties, padding);
-        background-color: map-get($value, bg);
-        gap: 8px;
-      }
-        .btn-#{$size}:hover {
-          background-color: map-get($value, hover-bg);
-          @extend %btn-hover;
-        }
-    } @else {
-        .btn-#{$color}-#{$size} {
-          @extend %btn;
-          @extend .lable-#{map-get($properties, lebel-size)};
-          padding: map-get($properties, padding);
-          background-color: map-get($value, bg);
-          @if $color == "white" {
-            color: map-get($value, color);
-          }
-          gap: 8px;
-        }
-        .btn-#{$color}-#{$size}:hover {
-          background-color: map-get($value, hover-bg);
-          @extend %btn-hover;
-        }
-      }
-  }
-}
-.border{
-  border: $border-width solid;
-}
-.border-hover:hover {
-  @extend .border;
-}
-/* 文字樣式 */
-body{
-  font-family: "Noto Sans", sans-serif;
-  color: var(--color-neutral-500);
-  line-height: var(--line-height);
-}
-.text-center{ text-align: center; }
-.text-left{ text-align: left; }
-.text-right{ text-align: right; }
-@each $type, $properties in $Typography-types {
-  @each $size, $value in map-get($properties, size) {
-    .#{$type}-#{$size} {
-      font-size: var(--#{$type}-#{$size});
-      letter-spacing: map-get($properties, letter-spacing);
-      font-weight: map-get($properties, font-weight);
-      @if string.index($size, "xl") {
-        line-height: map-get($properties, lh);
-      } @else {
-        line-height: map-get($properties, line-height);
-      }
-    }
-  }
-}
-// 響應式文字樣式
-@each $media, $screen in $media-breakpoints {
-  @media (min-width: $screen) {
-    @each $type, $properties in $Typography-types {
-      @each $size, $value in map-get($properties, size) {
-        .#{$type}-#{$media}-#{$size} {
-          font-size: var(--#{$type}-#{$size});
-          letter-spacing: map-get($properties, letter-spacing);
-          font-weight: map-get($properties, font-weight);
-          @if string.index($size, "xl") {
-            line-height: map-get($properties, lh);
-          } @else {
-            line-height: map-get($properties, line-height);
-          }
-        }
-      }
-    }
-  }
-}
-/* google icon 預設設定 */
-.material-symbols-outlined {
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
-  font-size: 12px;
-}
-
+.label+.label::before{ content: "．"; }
 
 /* text field */
 .text-field {
   display: block;
-  border-radius: 40px;
-  @extend .border;
-  padding: 8px - $border-width;
+  border-radius: var(--TF-radius);
+  border: var(--border-width) solid var(--color-neutral-0);
+  padding: calc(8px - var(--border-width));
   color: var(--color-neutral-0);
   display: flex;
-  gap: 8px;
+  gap: var(--gap-2);
   justify-content: space-between;
   align-items: center;
     
   input{
+    border-radius: var(--TF-radius);
     background: inherit;
     border: none;
     color: inherit;
-    padding: map-get($spacing-sizes, 2) map-get($spacing-sizes, 3);
+    padding: var(--p-2) var(--p-3);
+    gap: var(--gap-2);
     &:focus{ outline: none; }
     &::placeholder{color:inherit;}
-  }
-  .input-text{
+
     flex: auto;
-    @extend .paragraph-sm;}
+    @include fonts.copyTyCSS("paragraph","sm");
+  }
   
   button{
-    @extend .lable-sm;
-    padding: map-get($spacing-sizes, 3) map-get($spacing-sizes, 5);
+    @include fonts.copyTyCSS("label","sm");
+    padding: var(--p-3) var(--p-5);
   }
 
-  @media (min-width: map-get($media-breakpoints, xl)) {
+  @include grid.media("xl") {
     input{
-      @extend .paragraph-xl-md;
-      padding: map-get($spacing-sizes, 3) map-get($spacing-sizes, 6);}
+      @include fonts.copyTyCSS("paragraph","md");
+      padding: var(--p-3) var(--p-6);}
     button{
-      @extend .lable-xl-md;
-      padding: map-get($spacing-sizes, 3) map-get($spacing-sizes, 6);
+      @include fonts.copyTyCSS("label","md");
+      padding: var(--p-3) var(--p-6);
     }
   }
 }
@@ -312,14 +55,14 @@ body{
   width: 140px;
   height: 40%;
 }
-@media (max-width: $max-width) {
+@include grid.media("xl") {
   .logo{
     width: 112px;
     height: 32px;
   }
 }
 // icon
-// lable
+// label
 // illus
 /* Banner */
 .banner{
@@ -338,14 +81,14 @@ body{
     @extend section;
   }
 }
-@media (min-width: map-get($media-breakpoints, xl)) {
+@include grid.media("xl") {
   .banner{
-    padding:0 map-get($spacing-sizes, 8);    
+    padding: 0px;
     background: linear-gradient( var(--color-dark-60a), var(--color-dark-60a)), 
     url('../img/subscription_bg.png')center/cover no-repeat;
     .banner-img{ min-height: 440px; }
     .right{
-      @extend section;
+        padding: var(--p-10) var(--p-8);
     }
   }
 }
@@ -354,75 +97,202 @@ body{
   .service-card{
     width: 260px;
     height: 133px;
-    padding: map-get($spacing-sizes, 3);
-    gap: map-get($spacing-sizes, 2);
+    padding: var(--p-3);
+    gap: var(--gap-2);
     background-color: var(--color-primary-50);
     color: var(--color-neutral-700);
-    @extend .paragraph-sm;
+    @include fonts.copyTyCSS("paragraph","sm");
     display: flex;
     flex-wrap: wrap;
     align-items: start;
     .card-title{
-      @extend .heading-xxxxsm;
-      line-height: 1.5;
+      @include fonts.copyTyCSS("heading","xxxxsm");
       span{
-        @extend .heading-sm;
+        @include fonts.copyTyCSS("heading","sm");
         display: block;
-        line-height: 1.5;
       }
-    }
-    .material-symbols-outlined{
-      margin-left: auto;
-      font-size: 10px;
-      &.btn{
-        font-size: 20px;
+      &+.material-symbols-outlined{
+        margin-left: auto;
+        font-size: 24px;
       }
     }
     .bottom{
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      gap: map-get($spacing-sizes, 2);
+      gap: var(--gap-2);
       width: 100%;
       .card-description{
         max-width: 184px;
-        @extend .paragraph-sm;
+        @include fonts.copyTyCSS("paragraph","sm");
       }
-      // .material-symbols-outlined{
-      //   font-size: 10px;
-      //   &.btn{
-      //     font-size: 20px;
-      //   }
-      // }
+      .btn{
+        font-size: 20px;
+        padding: var(--p-3)
+      }
     }
   }
-  @media (min-width: map-get($media-breakpoints, xl)) {
+  @include grid.media("xl") {
     .service-card{
       width: 306px;
       height: 174px;
-      padding: map-get($spacing-sizes, 6);
-      gap: map-get($spacing-sizes, 3);
+      padding: var(--p-6);
+      gap: var(--gap-3);
       .card-title{
-        @extend .heading-xl-xxxsm;
-        span{ @extend .heading-xl-md;}
-      }
-      .material-symbols-outlined{
-        font-size: 28px;
-        &.btn{font-size: 24px;}
+        @include fonts.copyTyCSS("heading","xxxsm");
+        span{ @include fonts.copyTyCSS("heading","md");}
+        &+.material-symbols-outlined{
+          font-size: 28px;
+        }
       }
       .bottom{
-        gap: map-get($spacing-sizes, 3);
+        gap: var(--gap-3);
         .card-description{
           max-width: 198px;
-          @extend .paragraph-xl-md;
+          @include fonts.copyTyCSS("paragraph","md");
         }
-
+        .btn{
+          font-size: 24px;
+        }
       }
     }
   }
 }
 /* project */
-.project-card{
-  background-color: var(--color-primary-50);
+.projects{
 
+  ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap-3);
+  }
+  .project-card {
+    display: flex;
+    justify-content: start;
+    align-items: flex-end;
+    width: 100%;
+    max-width: 351px;
+    min-height: 580px;
+    padding: var(--p-4);
+    gap: var(--gap-3);
+    background: url(../img/mobile/project_1.png)center/cover no-repeat;
+    color: var(--color-neutral-700);
+    .card-content{
+      background-color: var(--color-primary-50);
+      text-align: center;
+      min-height: 284px;
+      padding: var(--p-6);
+      gap: var(--gap-3);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      @extend .paragraph-sm;
+      time{
+        @extend .paragraph-xsm;
+      }
+      .card-title{
+        @extend .heading-xsm;
+      }
+    }
+  }
+  @include grid.media("xl",true) using ($screen){
+    .project-card{
+      max-width: 100%;
+      min-height: 397px;
+      padding: var(--p-7);
+      gap: var(--gap-6);
+      align-items: stretch;
+      background-image: url(../img/project_1.png);
+      .card-content{
+        padding: var(--p-8);
+        @extend .paragraph-#{$screen}-md;
+        
+        .card-title{ @extend .heading-#{$screen}-sm; }
+        time{@extend .paragraph-#{$screen}-sm;}
+      }
+    }
+    
+  }
 }
+/* Blog card */
+.blog{
+  gap: var(--gap-6);
+  .blog-card{
+    min-width: 260px;
+    display: flex;
+    flex-wrap: wrap;
+    gap:var(--gap-2);
+    .blog-img{
+      width: 100%;
+      min-height: 148.15px;
+      position: relative;
+      overflow: hidden;
+      &::before{
+        content: "";
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: all 0.5s ease;
+        transform-origin: translate(50%, 50%);
+        background: linear-gradient( var(--color-dark-40a), var(--color-dark-40a))center/cover no-repeat;
+      }
+
+    }
+  &:hover .blog-img::before{
+    transform: scale(150%);
+    filter: blur(2px);
+    opacity: 0.6;
+  }
+    .card-content{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-2);
+      .card-title{
+        @include fonts.copyTyCSS("heading","xsm");
+      }
+      .label{
+        @include fonts.copyTyCSS("paragraph","sm");
+      }
+      time,u{
+        @include fonts.copyTyCSS("paragraph","xsm");
+      }
+      .post-meta{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--gap-2);
+        time{margin-right: auto;}
+        u{
+          display: inline-flex;
+          gap: var(--gap-1);
+          justify-content: center;
+          align-items: center;
+        }
+        .material-symbols-outlined{
+          font-size: 20px;
+        }
+      }
+    }
+  }
+  
+  @include grid.media("xl",true) using ($screen){
+    .blog-card{
+      gap: var(--gap-3);
+      .blog-img{min-height: 240px;}
+      .card-content{
+        gap: var(--gap-3);
+        .card-title{@include fonts.copyTyCSS("heading", "sm"); }
+        .label{ @include fonts.copyTyCSS("paragraph", "md"); }
+        time,u{ @include fonts.copyTyCSS("paragraph", "sm"); }
+      }
+    }
+  }
+}
+// /* －－－以上為一些全局的樣式，包含一些常用的 class */
