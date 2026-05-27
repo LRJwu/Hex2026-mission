@@ -53,7 +53,7 @@
 /* Display 展示類 */
 .logo{
   width: 140px;
-  height: 40%;
+  height: 40px;
 }
 @include grid.media("xl") {
   .logo{
@@ -111,7 +111,7 @@
         @include fonts.copyTyCSS("heading","sm");
         display: block;
       }
-      &+.material-symbols-outlined{
+      &+.google-symbols{
         margin-left: auto;
         font-size: 24px;
       }
@@ -141,7 +141,7 @@
       .card-title{
         @include fonts.copyTyCSS("heading","xxxsm");
         span{ @include fonts.copyTyCSS("heading","md");}
-        &+.material-symbols-outlined{
+        &+.google-symbols{
           font-size: 28px;
         }
       }
@@ -218,16 +218,19 @@
   }
 }
 /* Blog card */
+:root{ --blog-card-img-h: 148.15px; }
 .blog{
   gap: var(--gap-6);
   .blog-card{
     min-width: 260px;
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
+    align-content: stretch;
     gap:var(--gap-2);
     .blog-img{
       width: 100%;
-      min-height: 148.15px;
+      height: var(--blog-card-img-h);
       position: relative;
       overflow: hidden;
       &::before{
@@ -251,6 +254,7 @@
   }
     .card-content{
       width: 100%;
+      height: calc(100% - var(--blog-card-img-h) - var(--gap-2));
       display: flex;
       flex-direction: column;
       gap: var(--gap-2);
@@ -264,6 +268,7 @@
         @include fonts.copyTyCSS("paragraph","xsm");
       }
       .post-meta{
+        margin-top: auto;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -275,17 +280,19 @@
           justify-content: center;
           align-items: center;
         }
-        .material-symbols-outlined{
+        .google-symbols{
           font-size: 20px;
         }
       }
     }
   }
-  
-  @include grid.media("xl",true) using ($screen){
+}
+@include grid.media("xl",true) using ($screen){
+  :root{ --blog-card-img-h: 240px; }
+  .blog{
     .blog-card{
       gap: var(--gap-3);
-      .blog-img{min-height: 240px;}
+      // .blog-img{min-height: 240px;}
       .card-content{
         gap: var(--gap-3);
         .card-title{@include fonts.copyTyCSS("heading", "sm"); }
@@ -294,5 +301,108 @@
       }
     }
   }
+}
+/*nav 導覽列*/
+// body{position: relative;overflow:hidden;}
+// body:has(.navbar .nav-toggle:active) {
+
+//   &::before{
+//     content: "";
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100vw;
+//     height: 100vh;
+//     background-color: var(--color-dark-60a);
+//     backdrop-filter: blur(1px);
+//     z-index: 99;
+//     pointer-events: none;
+//   }
+// }
+
+.navbar{
+  position:sticky;
+  top: 0;
+  z-index: 100;
+  padding: var(--p-2) var(--p-3);
+  gap: var(--gap-2);
+  .container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap-3);
+  }
+  .logo img{width: 100%;height: 100%; object-fit: cover; }
+  button{
+    margin-left: auto;
+    padding: calc(var(--p-3) - var(--border-width));
+  }
+  .nav-menu{
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-3);
+    padding: var(--p-3);
+    text-align: center;
+    width: 100%;
+    .nav-item{
+      @include fonts.copyTyCSS("label","sm");
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+        a{
+          display: inline-block;
+          padding: var(--p-1) var(--p-3);
+        }
+        &:hover a{
+          background: var(--color-neutral-900);
+          color: var(--color-neutral-0);
+        }
+      }
+    }
+  }
+@include grid.media("xl") {
+  .navbar{
+    padding: var(--p-3) var(--p-8);
+    .nav-toggle{display: none;}
+    .nav-menu{
+      width: initial;
+      margin-left: auto;
+      padding:0;
+      gap: var(--gap-6);
+      .nav-item{
+        width: initial;
+        @include fonts.copyTyCSS("label","md");
+      }
+    }
+  }
+}
+/* breadcrumb 麵包屑 */
+.breadcrumbs{
+  padding: var(--p-2) var(--p-3);
+  background: var(--color-primary-900);
+  color: var(--color-neutral-0);
+  .breadcrumb{
+    display: flex;
+    gap: var(--gap-1);
+    @include fonts.copyTyCSS("label","sm");
+
+    li+li::before{
+      vertical-align: bottom;
+      content: "keyboard_arrow_right";
+      @extend %icon;
+    }
+  }
+}
+@include grid.media("xl") {
+  .breadcrumbs{
+    padding: var(--p-3) var(--p-8);
+    .breadcrumb{
+      gap: var(--gap-2);
+      @include fonts.copyTyCSS("label","md");
+      li+li::before{ font-size: 24px; }
+    }
+   }
 }
 // /* －－－以上為一些全局的樣式，包含一些常用的 class */

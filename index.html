@@ -4,16 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://static-media.hotmart.com/KaucTCtGmOBqr6NHVziY1s7QYqA=/32x32/https://uploads.teachablecdn.com/attachments/ghztj87TumMKJ4WVLUcg_hex-teachable-favicon.ico' rel='icon' type='image/png'>
-    <link href='https://static-media.hotmart.com/oYFM393gStzwtrH23wL25XQ5XGk=/640x690/https://uploads.teachablecdn.com/attachments/HrBwlE1qQV2R2LYUTSOy_teachable.png' rel='apple-touch-startup-image' type='image/png'>
-    <link href='https://static-media.hotmart.com/ZAVsjFMorl4-XKrPjBgblQsZnyg=/72x72/https://uploads.teachablecdn.com/attachments/ghztj87TumMKJ4WVLUcg_hex-teachable-favicon.ico' rel='apple-touch-icon' type='image/png'>
-    <link href='https://static-media.hotmart.com/lqeGzwuLzHYr1TvMzlNTY-6WXo8=/144x144/https://uploads.teachablecdn.com/attachments/ghztj87TumMKJ4WVLUcg_hex-teachable-favicon.ico' rel='apple-touch-icon' type='image/png'>
-    <link href='https://static-media.hotmart.com/yCgoorIzbivEECGpmUED5HQk8jg=/320x345/https://uploads.teachablecdn.com/attachments/HrBwlE1qQV2R2LYUTSOy_teachable.png' rel='apple-touch-startup-image' type='image/png'>
+    
     <title>Nelson</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
     <link rel="stylesheet" href="https://icons.getbootstrap.com/assets/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/all.css">
 </head>
 <body>
+    <nav class="navbar bg-light">
+        <div class="container">
+            <a class="logo" title="Nelson"><img src="img/device-mobile.svg" alt="Nelson logo"></a>
+            <button class="nav-toggle btn-outline">
+                <span class="google-symbols">menu</span>
+            </button>
+            <ul class="nav-menu">
+                <li class="nav-item"><a class="hover" href="#services">服務項目</a></li>
+                <li class="nav-item"><a class="hover" href="#projects">專案作品</a></li>
+                <li class="nav-item"><a class="hover" href="#blog">部落格</a></li>
+                <li class="nav-item"><a class="hover" href="#contact">與我聯絡</a></li>
+            </ul>
+        </div>
+    </nav>
+    <nav class="breadcrumbs">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrum-item"><a href="#">首頁</a></li>
+                <li class="breadcrum-item"><a href="#">部落格</a></li>
+                <li class="breadcrum-item"><a href="#">部落格標題</a></li>
+            </ol>
+        </div>
+    </nav>
+
     <section id="projects" class="projects bg-light text-center">
         <div class="container">
             <h2 class="heading-xxxxsm heading-xl-xxxsm">專案作品<br><span class="heading-xlg heading-xl-xxxlg">PROJECTS</span></h2>
@@ -69,8 +90,8 @@
                                 <h3 class="card-title">10年職人手記：如何運用 Figma 與 Storybook 打造美感與邏輯兼具的企業級設計系統</h3>
                                 <p class="post-meta">
                                     <time datetime="">Oct 16, 2025</time>
-                                    <u class="view"><span class="material-symbols-outlined">visibility</span>110 views</u>
-                                    <u class="shares"><span class="material-symbols-outlined">share</span>2 shares</u>
+                                    <u class="view"><span class="google-symbols">visibility</span>110 views</u>
+                                    <u class="shares"><span class="google-symbols">share</span>2 shares</u>
                                 </p>
                             </article>
                         </a>
@@ -87,8 +108,8 @@
                                 <h3 class="card-title">從平面識別到數位體驗：以「植感生活」為例，探討跨媒體品牌視覺在網頁上的精準轉譯 </h3>
                                 <p class="post-meta">
                                     <time datetime="">Oct 16, 2025</time>
-                                    <u class="view"><span class="material-symbols-outlined">visibility</span>110 views</u>
-                                    <u class="shares"><span class="material-symbols-outlined">share</span>2 shares</u>
+                                    <u class="view"><span class="google-symbols">visibility</span>110 views</u>
+                                    <u class="shares"><span class="google-symbols">share</span>2 shares</u>
                                 </p>
                             </article>
                         </a>
@@ -105,8 +126,8 @@
                                 <h3 class="card-title">揭開金融 App 的設計密碼：如何優化 Open Bank API 的複雜數據呈現與後端串接安全性</h3>
                                 <p class="post-meta">
                                     <time datetime="">Oct 16, 2025</time>
-                                    <u class="view"><span class="material-symbols-outlined">visibility</span>110 views</u>
-                                    <u class="shares"><span class="material-symbols-outlined">share</span>2 shares</u>
+                                    <u class="view"><span class="google-symbols">visibility</span>110 views</u>
+                                    <u class="shares"><span class="google-symbols">share</span>2 shares</u>
                                 </p>
                             </article>
                         </a>
@@ -115,7 +136,7 @@
             </div>
         </div>
     </section>
-    <section class="services bg-primary pr-0 pr-xl-8">
+    <section id="services" class="services bg-primary pr-0 pr-xl-8">
         <div class="container pr-0">
             <h2 class="heading-xxxxsm heading-xl-xxxsm">服務項目<br><span class="heading-xlg heading-xl-xxxlg">SERVICES</span></h2>
             <div class="scroll-x mt-6 mt-xl-8">
@@ -123,40 +144,40 @@
                     <li class="">
                         <a href="#" class="service-card">
                             <h3 class="card-title">GRAPHIC<br><span>平面設計</span></h3>
-                            <span class="material-symbols-outlined"> format_color_fill</span>
+                            <span class="google-symbols"> format_color_fill</span>
                             <div class="bottom">
                                 <p class="card-description">從品牌識別到視覺傳達，用專業設計精準傳遞核心價值 </p>
-                                <b class="btn"><span class="material-symbols-outlined">arrow_outward</span></b>
+                                <b class="btn"><span class="google-symbols">arrow_outward</span></b>
                             </div>
                         </a>
                     </li>
                     <li class="">
                         <a href="#" class="service-card">
                             <h3 class="card-title">WEBSITE<br><span>網頁設計</span></h3>
-                            <span class="material-symbols-outlined"> screenshot_monitor</span>
+                            <span class="google-symbols"> screenshot_monitor</span>
                             <div class="bottom">
                                 <p class="card-description">美感易用並重，以 Figma 打造符合直覺的數位體驗</p>
-                                <b class="btn"><span class="material-symbols-outlined">arrow_outward</span></b>
+                                <b class="btn"><span class="google-symbols">arrow_outward</span></b>
                             </div>
                         </a>
                     </li>
                     <li class="">
                         <a href="#" class="service-card">
                             <h3 class="card-title">FRONTEND<br><span>前端切版</span></h3>
-                            <span class="material-symbols-outlined"> web</span>
+                            <span class="google-symbols"> web</span>
                             <div class="bottom">
                                 <p class="card-description">精準轉譯設計稿細節，建構流暢穩定 RWD 響應式網頁</p>
-                                <b class="btn"><span class="material-symbols-outlined">arrow_outward</span></b>
+                                <b class="btn"><span class="google-symbols">arrow_outward</span></b>
                             </div>
                         </a>
                     </li>
                     <li class="">
                         <a href="#" class="service-card">
                             <h3 class="card-title">BACKEND<br><span>後端開發</span></h3>
-                            <span class="material-symbols-outlined"> data_table</span>
+                            <span class="google-symbols"> data_table</span>
                             <div class="bottom">
                                 <p class="card-description">佈署穩定系統架構，串接 API 並確保數據處理安全</p>
-                                <b class="btn"><span class="material-symbols-outlined">arrow_outward</span></b>
+                                <b class="btn"><span class="google-symbols">arrow_outward</span></b>
                             </div>
                         </a>
                     </li>
@@ -164,7 +185,7 @@
             </div>
         </div>
     </section>
-    <section class="banner">
+    <section id="contact" class="banner">
         <div class="container p-0">
             <div class="row jcc aic gap-0 gap-xl-3">
                 <div class="col-xl-5">
@@ -181,34 +202,57 @@
             </div>
         </div>
     </section>
-    <!-- <div class="container">
-        <div class="bg-primary row jcc aic">
-            <div class="col-6 text-field">
-                <input class="input-text-lg" type="email" placeholder="信箱" value="">
-                <button class="btn-white">送出</button>
-            </div>
-            <div class="col-6 text-field">
-                <input class="input-text-md" type="email" placeholder="信箱">
-                <button class="btn-white">送出</button>
-            </div>
-        </div>
-        <a href="#" class="btn-lg">按鈕文字</a>
-        <a href="#" class="btn-primary-lg">按鈕文字</a>
-        <a href="#" class="btn-md">按鈕文字</a>
-        <a href="#" class="btn-primary-md">按鈕文字</a>
-        <a href="#" class="btn-white-lg">按鈕文字</a>
-        <a href="#" class="btn-white-md">按鈕文字</a>
-        <a href="#" class="btn-white-lg border">按鈕文字</a>
-        <a href="#" class="btn-white-md border">按鈕文字</a>
-        <span class="material-symbols-outlined btn"> arrow_outward </span>
-        <span class="material-symbols-outlined btn-primary"> arrow_outward </span>
-        <span class="material-symbols-outlined btn-white border-hover"> arrow_outward </span>
-        <span class="material-symbols-outlined btn-white border"> arrow_outward </span>
-        <div class="row jcsb aic">
-            <div class="col-2 col-xl-6 heading-lg">col-2 col-md-6</div>
-            <div class="col-10 heading-lg bg-primary">col-10</div>
-            <div class="col-12 display-2">col-12 </div>
-        </div>
-    </div> -->
+    <footer class="foo"></footer>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    $('.nav-menu').hide(); // 預設隱藏選單
+    $('.nav-toggle').on('click', function() {
+        $('.nav-menu').slideToggle(); // 切換選單顯示/隱藏
+    });
+    $(document).ready(function() {
+        const $slider = $('.scroll-x');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        // 1. 滑鼠按下：開始偵測拖曳
+        $slider.on('mousedown', function(e) {
+            isDown = true;
+            startX = e.pageX - $slider.offset().left;
+            scrollLeft = $slider.scrollLeft();
+            $slider.css('cursor', 'grabbing'); // 變成抓取手勢
+        });
+
+        // 2. 滑鼠放開或離開區域：取消拖曳
+        $(window).on('mouseup', function() {
+            if (isDown) {
+            isDown = false;
+            $slider.css('cursor', 'grab'); // 還原手勢
+            }
+        });
+
+        // 3. 滑鼠移動：計算並同步滾動距離
+        $slider.on('mousemove', function(e) {
+            if (!isDown) return; // 沒按下就跳過
+            e.preventDefault();
+            const x = e.pageX - $slider.offset().left;
+            const walk = (x - startX) * 2; // *2 代表加倍滑動速度，可自由調整
+            $slider.scrollLeft(scrollLeft - walk);
+        });
+
+        // 4. 直接用滑鼠滾輪控制左右滑動
+        $slider.on('wheel', function(e) {
+            // 檢查是否有垂直滾動
+            if (e.originalEvent.deltaY !== 0) {
+            e.preventDefault();
+            // 將垂直滾動量 (deltaY) 加給水平滾動 (scrollLeft)
+            const currentScroll = $slider.scrollLeft();
+            $slider.scrollLeft(currentScroll + e.originalEvent.deltaY);
+            }
+        });
+        });
+</script>
 </body>
+
 </html>

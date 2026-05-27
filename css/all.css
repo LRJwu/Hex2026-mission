@@ -1507,6 +1507,11 @@ button {
 .scroll-x {
   overflow-x: scroll;
   overflow-y: hidden;
+  scrollbar-width: none; /* 隱藏捲軸 */
+  cursor: grab; /* 預設顯示可抓取的手掌圖示 */
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none; /* 防止拖曳時選取到裡面的文字 */
 }
 
 .container {
@@ -1737,9 +1742,11 @@ body {
 }
 
 /* google icon 預設設定 */
-.material-symbols-outlined {
+.breadcrumbs .breadcrumb li + li::before, .google-symbols, .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
-  font-size: inherit;
+  font-family: "Material Symbols Outlined";
+  font-size: 20px;
+  line-height: 1;
 }
 
 .text-center {
@@ -1954,7 +1961,7 @@ body {
   line-height: 1.5;
   letter-spacing: 2%;
 }
-.btn .hover, .btn-outline .hover, .btn-neutral .hover, .btn-primary .hover, .btn-white .hover, .btn .active, .btn-outline .active, .btn-neutral .active, .btn-primary .active, .btn-white .active, .btn:hover, .btn-outline:hover, .btn-neutral:hover, .btn-primary:hover, .btn-white:hover, .btn:active, .btn-outline:active, .btn-neutral:active, .btn-primary:active, .btn-white:active, button .hover, button .active, button:hover, button:active {
+.btn.hover, .hover.btn-outline, .hover.btn-neutral, .hover.btn-primary, .hover.btn-white, .btn.active, .active.btn-outline, .active.btn-neutral, .active.btn-primary, .active.btn-white, .btn:hover, .btn-outline:hover, .btn-neutral:hover, .btn-primary:hover, .btn-white:hover, .btn:active, .btn-outline:active, .btn-neutral:active, .btn-primary:active, .btn-white:active, button.hover, button.active, button:hover, button:active {
   cursor: pointer;
   transition: all 0.3s ease;
   background-color: var(--color-neutral-900);
@@ -1978,7 +1985,7 @@ body {
   line-height: 1.5;
   letter-spacing: 2%;
 }
-.btn-white .hover, .btn-white .active, .btn-white:hover, .btn-white:active {
+.btn-white.hover, .btn-white.active, .btn-white:hover, .btn-white:active {
   cursor: pointer;
   transition: all 0.3s ease;
   background-color: var(--color-primary-50);
@@ -1995,7 +2002,7 @@ body {
     line-height: 1.5;
     letter-spacing: 2%;
   }
-  .btn-white .hover, .btn-white .active, .btn-white:hover, .btn-white:active {
+  .btn-white.hover, .btn-white.active, .btn-white:hover, .btn-white:active {
     cursor: pointer;
     transition: all 0.3s ease;
     background-color: var(--color-primary-50);
@@ -2011,7 +2018,7 @@ body {
   line-height: 1.5;
   letter-spacing: 2%;
 }
-.btn-primary .hover, .btn-primary .active, .btn-primary:hover, .btn-primary:active {
+.btn-primary.hover, .btn-primary.active, .btn-primary:hover, .btn-primary:active {
   cursor: pointer;
   transition: all 0.3s ease;
   background-color: var(--color-neutral-900);
@@ -2028,7 +2035,7 @@ body {
     line-height: 1.5;
     letter-spacing: 2%;
   }
-  .btn-primary .hover, .btn-primary .active, .btn-primary:hover, .btn-primary:active {
+  .btn-primary.hover, .btn-primary.active, .btn-primary:hover, .btn-primary:active {
     cursor: pointer;
     transition: all 0.3s ease;
     background-color: var(--color-neutral-900);
@@ -2044,7 +2051,7 @@ body {
   line-height: 1.5;
   letter-spacing: 2%;
 }
-.btn-neutral .hover, .btn-neutral .active, .btn-neutral:hover, .btn-neutral:active {
+.btn-neutral.hover, .btn-neutral.active, .btn-neutral:hover, .btn-neutral:active {
   cursor: pointer;
   transition: all 0.3s ease;
   background-color: var(--color-neutral-900);
@@ -2061,7 +2068,7 @@ body {
     line-height: 1.5;
     letter-spacing: 2%;
   }
-  .btn-neutral .hover, .btn-neutral .active, .btn-neutral:hover, .btn-neutral:active {
+  .btn-neutral.hover, .btn-neutral.active, .btn-neutral:hover, .btn-neutral:active {
     cursor: pointer;
     transition: all 0.3s ease;
     background-color: var(--color-neutral-900);
@@ -2077,7 +2084,7 @@ body {
   line-height: 1.5;
   letter-spacing: 2%;
 }
-.btn-outline .hover, .btn-outline .active, .btn-outline:hover, .btn-outline:active {
+.btn-outline.hover, .btn-outline.active, .btn-outline:hover, .btn-outline:active {
   cursor: pointer;
   transition: all 0.3s ease;
   background-color: var(--color-primary-500);
@@ -2097,7 +2104,7 @@ body {
     line-height: 1.5;
     letter-spacing: 2%;
   }
-  .btn-outline .hover, .btn-outline .active, .btn-outline:hover, .btn-outline:active {
+  .btn-outline.hover, .btn-outline.active, .btn-outline:hover, .btn-outline:active {
     cursor: pointer;
     transition: all 0.3s ease;
     background-color: var(--color-primary-500);
@@ -2107,6 +2114,11 @@ body {
     border: var(--border-width) solid var(--color-neutral-700);
   }
 }
+.btn-t {
+  background-color: transparent;
+  color: inherit;
+}
+
 :root {
   --border-0: none;
   --border-width: 1px;
@@ -2214,7 +2226,7 @@ body {
 /* Display 展示類 */
 .logo {
   width: 140px;
-  height: 40%;
+  height: 40px;
 }
 
 @media (min-width: 1295px) {
@@ -2279,7 +2291,7 @@ body {
   letter-spacing: 2%;
   display: block;
 }
-.services .service-card .card-title + .material-symbols-outlined {
+.services .service-card .card-title + .google-symbols {
   margin-left: auto;
   font-size: 24px;
 }
@@ -2320,7 +2332,7 @@ body {
     line-height: 1.5;
     letter-spacing: 2%;
   }
-  .services .service-card .card-title + .material-symbols-outlined {
+  .services .service-card .card-title + .google-symbols {
     font-size: 28px;
   }
   .services .service-card .bottom {
@@ -2384,18 +2396,24 @@ body {
 }
 
 /* Blog card */
+:root {
+  --blog-card-img-h: 148.15px;
+}
+
 .blog {
   gap: var(--gap-6);
 }
 .blog .blog-card {
   min-width: 260px;
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
+  align-content: stretch;
   gap: var(--gap-2);
 }
 .blog .blog-card .blog-img {
   width: 100%;
-  min-height: 148.15px;
+  height: var(--blog-card-img-h);
   position: relative;
   overflow: hidden;
 }
@@ -2418,6 +2436,7 @@ body {
 }
 .blog .blog-card .card-content {
   width: 100%;
+  height: calc(100% - var(--blog-card-img-h) - var(--gap-2));
   display: flex;
   flex-direction: column;
   gap: var(--gap-2);
@@ -2441,6 +2460,7 @@ body {
   letter-spacing: 2%;
 }
 .blog .blog-card .card-content .post-meta {
+  margin-top: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -2455,15 +2475,16 @@ body {
   justify-content: center;
   align-items: center;
 }
-.blog .blog-card .card-content .post-meta .material-symbols-outlined {
+.blog .blog-card .card-content .post-meta .google-symbols {
   font-size: 20px;
 }
+
 @media (min-width: 1295px) {
+  :root {
+    --blog-card-img-h: 240px;
+  }
   .blog .blog-card {
     gap: var(--gap-3);
-  }
-  .blog .blog-card .blog-img {
-    min-height: 240px;
   }
   .blog .blog-card .card-content {
     gap: var(--gap-3);
@@ -2487,7 +2508,113 @@ body {
     letter-spacing: 2%;
   }
 }
+/*nav 導覽列*/
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: var(--p-2) var(--p-3);
+  gap: var(--gap-2);
+}
+.navbar .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--gap-3);
+}
+.navbar .logo img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.navbar button {
+  margin-left: auto;
+  padding: calc(var(--p-3) - var(--border-width));
+}
+.navbar .nav-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-3);
+  padding: var(--p-3);
+  text-align: center;
+  width: 100%;
+}
+.navbar .nav-menu .nav-item {
+  font-size: var(--label-sm);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 2%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar .nav-menu .nav-item a {
+  display: inline-block;
+  padding: var(--p-1) var(--p-3);
+}
+.navbar .nav-menu .nav-item:hover a {
+  background: var(--color-neutral-900);
+  color: var(--color-neutral-0);
+}
 
+@media (min-width: 1295px) {
+  .navbar {
+    padding: var(--p-3) var(--p-8);
+  }
+  .navbar .nav-toggle {
+    display: none;
+  }
+  .navbar .nav-menu {
+    width: initial;
+    margin-left: auto;
+    padding: 0;
+    gap: var(--gap-6);
+  }
+  .navbar .nav-menu .nav-item {
+    width: initial;
+    font-size: var(--label-md);
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 2%;
+  }
+}
+/* breadcrumb 麵包屑 */
+.breadcrumbs {
+  padding: var(--p-2) var(--p-3);
+  background: var(--color-primary-900);
+  color: var(--color-neutral-0);
+}
+.breadcrumbs .breadcrumb {
+  display: flex;
+  gap: var(--gap-1);
+  font-size: var(--label-sm);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 2%;
+}
+.breadcrumbs .breadcrumb li + li::before {
+  vertical-align: bottom;
+  content: "keyboard_arrow_right";
+}
+
+@media (min-width: 1295px) {
+  .breadcrumbs {
+    padding: var(--p-3) var(--p-8);
+  }
+  .breadcrumbs .breadcrumb {
+    gap: var(--gap-2);
+    font-size: var(--label-md);
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 2%;
+  }
+  .breadcrumbs .breadcrumb li + li::before {
+    font-size: 24px;
+  }
+}
 /* index.scss */
 .projects ul .project-card:nth-child(1) {
   background-image: url(../img/mobile/project_1.png);

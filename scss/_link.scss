@@ -41,7 +41,7 @@ $border-width: 1px;
 
 /* 以上為 Link btn border...操作類樣式 */
 @mixin hover-effect($bg:null,$color:null) {
-    .hover,.active,&:hover,&:active {
+    &.hover,&.active,&:hover,&:active {
         cursor: pointer;
         transition: all 0.3s ease;
         @if $bg {
@@ -71,6 +71,7 @@ $border-width: 1px;
     
     @include hover-effect(var(--color-neutral-900),var(--color-neutral-0)) 
 }
+
 //螢幕尺寸xl以上的按鈕
 @include grid.media(xl){
     .btn{
@@ -108,6 +109,7 @@ $border-width: 1px;
         }
     }
 }
+.btn-t{ background-color: transparent; color:inherit; }
 :root {
   --border-0: none;
   --border-width: #{$border-width};
