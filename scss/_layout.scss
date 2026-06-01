@@ -1,0 +1,213 @@
+@use "sass:map";
+@use "sass:string";
+$grid-coulmn: 12;
+$grid-gap: 24px;
+$grid-template-map: (
+  1: repeat(1, 1fr),
+  2: repeat(2, 1fr),
+  3: repeat(3, 1fr),
+  4: repeat(4, 1fr),
+  6: repeat(6, 1fr),
+  12: repeat(12, 1fr),
+);
+$max-width: 86px * 12 + $grid-gap * 11;
+$min-width: 375px;
+$media-breakpoints: (
+    // "sm": $max-width * 0.25,
+    // "sm": $min-width - 1px,
+    // "md": 768px,
+    // "lg": 992px,
+    // "xl": 1200px,
+    "xl": $max-width - 1px,
+    // "xxl": 1400px
+);
+$spacing:(
+  0 : 0,
+  1 : 4px,
+  2 : 8px,
+  3 : 12px,
+  4 : 16px,
+  5 : 20px,
+  6 : 24px,
+//   7 : 28px,
+  7 : 32px,
+  8 : 40px,
+  // "8" : 48px,
+  9 : 64px,
+  10: 80px,
+  "auto": auto,
+);
+$spaceing-classes: (
+    "g": "gap",
+    "p": "padding",
+    "pt": "padding-top",
+    "pb": "padding-bottom",
+    "pl": "padding-left",
+    "pr": "padding-right",
+    "px": "padding-left, padding-right",
+    "py": "padding-top, padding-bottom",
+    "m": "margin",
+    "mt": "margin-top",
+    "mb": "margin-bottom",
+    "ml": "margin-left",
+    "mr": "margin-right",
+    "mx": "margin-left, margin-right",
+    "my": "margin-top, margin-bottom"
+);
+$display:(
+    "hide":none,
+    "none":none,
+    "block":block, 
+    "inline-block":inline-block, 
+    "inline":inline, 
+    "flex":flex, 
+    "grid":grid, 
+    "table":table, 
+    "show":initial, 
+);
+// 螢幕斷點的 mixin （專門負責印出 @media）
+@mixin media($breakpoint : null,$returnName: null) {
+    @if map.has-key($media-breakpoints, $breakpoint) {
+        @media (min-width: map.get($media-breakpoints, $breakpoint)) {
+            
+            @if $returnName!= null{ @content($breakpoint); }
+            @else{ @content; }
+        }
+    } @else {
+        @warn "沒有這個螢幕斷點名稱: #{$breakpoint}";
+    }
+}
+//         $前綴   ,$變數名稱,root/樣式名稱,螢幕尺寸
+@mixin css($prefix,$variable,$style:null,$screen: null) {
+    @content;
+    @each $name, $value in $variable{
+        @if $style == "root" {
+                #{$prefix}#{$name}: #{$value};
+        } 
+        @else {// 不在root內，寫上樣式名稱，直接印出 class id等選擇器
+            $selector: "#{$prefix}#{$name}";
+            @if $screen != null { $selector: "#{$prefix}#{$screen}-#{$name}"; }
+
+            // 💡 現代推薦寫法：更精簡、避免過度使用 #{}
+
+            #{$selector} {
+            // 如果 style 是一個逗號分隔的字串，則把它分割成一個列表
+            $styles: string.split($style, ", "); 
+            // 跑迴圈把每個屬性分開印出
+            @each $sub-style in $styles {
+                #{$sub-style}: #{$value}!important;
+                }
+            }           
+        }
+    }
+}
+
+/* 以下為 grid 等相關容器樣式 */
+
+.overflow-hidden { overflow: hidden; }
+.scroll-x {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none; /* 隱藏捲軸 */
+    cursor: grab;          /* 預設顯示可抓取的手掌圖示 */
+    // user-select: none;     /* 防止拖曳時選取到裡面的文字 */
+}
+.container {
+    max-width: $max-width;
+    margin: 0 auto;
+}
+section {
+    padding: var(--p-8) var(--p-3);
+     @include media("xl") {
+        padding: var(--p-10) var(--p-8);
+    }
+}
+//display樣式 $前綴,$變數名稱,root/樣式名稱,螢幕尺寸
+@include css(".d-", $display, "display");
+.flex {
+    display: flex;
+    gap: var(--gap-sm);
+}
+.row {
+    display: flex;
+    gap: calc((var(--gap) / 2));
+    flex-wrap: wrap;
+}
+.w-100,
+[class^="col-"],[class*="col-"]{ width: 100%; }
+.col { flex: 1; }
+
+@include css(".g-cols-", $grid-template-map, "grid-template-columns");
+@include css(".g-rows-", $grid-template-map, "grid-template-rows");
+@for $i from 1 through 6 {.g-start-#{$i} { grid-column-start: $i; }}
+@for $i from 1 through 6 {.g-row-#{$i} { grid-row: $i; }}
+@for $i from 1 through 6 {.g-rowspan-#{$i} { grid-row: span $i; }}
+@for $i from 1 through 6 {.order-#{$i} { order: $i; }}
+@for $i from 1 through $grid-coulmn {
+    .col-#{$i} {
+        max-width: calc((100% - var(--gap) * ($grid-coulmn - 1)) / $grid-coulmn * $i + var(--gap) * ($i - 1));
+    }
+}
+.jc-fs{ justify-content: flex-start; }
+.jc-fe{ justify-content: flex-end; }
+.jc-c{ justify-content: center; }
+.jc-sb{ justify-content: space-between; }
+.jc-sa{ justify-content: space-around; }
+.jc-se{ justify-content: space-evenly; }
+.ai-fs{ align-items: flex-start; }
+.ai-fe{ align-items: flex-end; }
+.ai-c{ align-items: center; }
+.ai-b{ align-items: baseline; }
+.ai-s{ align-items: stretch; }
+// 響應式容器樣式
+@each $screen, $breakpoint in $media-breakpoints {
+    @include media($screen) {
+        .overflow-#{$screen}-hidden { overflow: hidden; }
+        .scroll-#{$screen}-x { overflow-x: scroll; overflow-y: hidden; }
+        @include css(".d-", $display, "display", $screen);
+        @include css(".g-cols-", $grid-template-map, "grid-template-columns",$screen);
+        @include css(".g-rows-", $grid-template-map, "grid-template-rows",$screen);
+        @for $i from 1 through 6 {.g-start-#{$screen}-#{$i} { grid-column-start: $i; }}
+        @for $i from 1 through 6 {.g-row-#{$screen}-#{$i} { grid-row: $i; }}
+        @for $i from 1 through 6 {.g-rowspan-#{$screen}-#{$i} { grid-row: span $i; }}
+        @for $i from 1 through 6 {.order-#{$screen}-#{$i} { order: $i; }}
+        
+        @for $i from 1 through $grid-coulmn {
+            .col-#{$screen}-#{$i} {
+                max-width: calc((100% - var(--gap) * ($grid-coulmn - 1)) / $grid-coulmn * $i + var(--gap) * ($i - 1));
+            }
+        }
+        .jc-#{$screen}-fs{ justify-content: flex-start; }
+        .jc-#{$screen}-fe{ justify-content: flex-end; }
+        .jc-#{$screen}-c{ justify-content: center; }
+        .jc-#{$screen}-sb{ justify-content: space-between; }
+        .jc-#{$screen}-sa{ justify-content: space-around; }
+        .jc-#{$screen}-se{ justify-content: space-evenly; }
+        .ai-#{$screen}-fs{ align-items: flex-start; }
+        .ai-#{$screen}-fe{ align-items: flex-end; }
+        .ai-#{$screen}-c{ align-items: center; }
+        .ai-#{$screen}-b{ align-items: baseline; }
+        .ai-#{$screen}-s{ align-items: stretch; }
+    }
+}
+:root {
+    --gap: #{$grid-gap};
+    --gap-sm: #{map.get($spacing, 3)};
+    --gap-xl: #{$grid-gap};
+    @include css("--gap-", $spacing,"root");
+    /* 以上為 gap 的變數 */
+    @include css("--p-", $spacing,"root");
+    @include css("--m-", $spacing,"root");
+}
+
+@each $prefix, $style in $spaceing-classes {
+    @include css(".#{$prefix}-", $spacing, $style);
+}
+@each $screen, $breakpoint in $media-breakpoints {
+    @include media($screen) {
+        @each $prefix, $style in $spaceing-classes {
+            @include css(".#{$prefix}-", $spacing, $style, $screen);
+        }
+    }
+}
+/* －－－以上為 layout 等相關容器樣式 */

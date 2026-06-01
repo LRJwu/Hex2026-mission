@@ -1,6 +1,6 @@
 @use "sass:map";
 @use "sass:string";
-@use "_grid" as grid;
+@use "_layout" as layout;
 @use "_fonts" as fonts;
 $btn-sizes: (
   "lg": (
@@ -31,7 +31,7 @@ $btn-colors: (
     hover-bg: var(--color-neutral-900)
     ),
   "outline": (
-    color: var(--color-neutral-700),
+    color: inherit,
     bg: transparent,
     hover-bg: var(--color-primary-500)
     // hover-bg: var(--color-primary-50)
@@ -59,7 +59,7 @@ $border-width: 1px;
     justify-content: center;
     border: none;
     // border: 1px solid transparent;
-    border-radius: 9999px;
+    border-radius: 1000px;
     text-align: center;
     text-decoration: none;
     gap: var(--gap-2);
@@ -73,7 +73,7 @@ $border-width: 1px;
 }
 
 //螢幕尺寸xl以上的按鈕
-@include grid.media(xl){
+@include layout.media(xl){
     .btn{
         @include fonts.copyTyCSS(map.get(map.get($btn-sizes, "md"), font-type), map.get(map.get($btn-sizes, "lg"), font-type-size));
     }
@@ -97,14 +97,14 @@ $border-width: 1px;
         @extend .btn;
         @include create-btn(md, $color);
         @if $color == "outline" {
-            border: var(--border-width) solid var(--color-neutral-700);
+            border: var(--border-width) solid;
         }
     }
-    @include grid.media(xl) {
+    @include layout.media(xl) {
         .btn-#{$color} {
             @include create-btn(lg, $color);
             @if $color == "outline" {
-            border: var(--border-width) solid var(--color-neutral-700);
+            border: var(--border-width) solid;
         }
         }
     }

@@ -1,46 +1,48 @@
 @use "sass:map";
 @use "sass:string";
-@use "_grid" as grid;
+@use "_layout" as layout;
 @use "_fonts" as fonts;
 /* 以下為一些全局的樣式，包含一些常用的 class */
 /* 操作類型 */
 :root {
   --TF-radius: 32px;
+  --round-fill:1000px;
+  --round-0: 0;
 }
-.label+.label::before{ content: "．"; }
-
 /* text field */
 .text-field {
   display: block;
   border-radius: var(--TF-radius);
-  border: var(--border-width) solid var(--color-neutral-0);
   padding: calc(8px - var(--border-width));
-  color: var(--color-neutral-0);
+  // border: var(--border-width) solid var(--color-neutral-0);
+  border: var(--border-width) solid;
+  color: inherit;
   display: flex;
   gap: var(--gap-2);
   justify-content: space-between;
   align-items: center;
-    
-  input{
-    border-radius: var(--TF-radius);
-    background: inherit;
+  
+  input,textarea{
+    flex: auto;
     border: none;
+    border-radius: var(--TF-radius);
     color: inherit;
+    background: inherit;
     padding: var(--p-2) var(--p-3);
     gap: var(--gap-2);
     &:focus{ outline: none; }
     &::placeholder{color:inherit;}
-
-    flex: auto;
     @include fonts.copyTyCSS("paragraph","sm");
   }
+  
+  textarea{ min-height: 116px; border-radius: 32px; }
   
   button{
     @include fonts.copyTyCSS("label","sm");
     padding: var(--p-3) var(--p-5);
   }
 
-  @include grid.media("xl") {
+  @include layout.media("xl") {
     input{
       @include fonts.copyTyCSS("paragraph","md");
       padding: var(--p-3) var(--p-6);}
@@ -48,6 +50,7 @@
       @include fonts.copyTyCSS("label","md");
       padding: var(--p-3) var(--p-6);
     }
+    textarea{ min-height: 116px; border-radius: 40px; }
   }
 }
 /* Display 展示類 */
@@ -55,7 +58,7 @@
   width: 140px;
   height: 40px;
 }
-@include grid.media("xl") {
+@include layout.media("xl") {
   .logo{
     width: 112px;
     height: 32px;
@@ -63,6 +66,8 @@
 }
 // icon
 // label
+.labels{ display: inline-flex; }
+.label+.label::before{ content: "．"; }
 // illus
 /* Banner */
 .banner{
@@ -81,7 +86,7 @@
     @extend section;
   }
 }
-@include grid.media("xl") {
+@include layout.media("xl") {
   .banner{
     padding: 0px;
     background: linear-gradient( var(--color-dark-60a), var(--color-dark-60a)), 
@@ -132,7 +137,7 @@
       }
     }
   }
-  @include grid.media("xl") {
+  @include layout.media("xl") {
     .service-card{
       width: 306px;
       height: 174px;
@@ -157,6 +162,64 @@
       }
     }
   }
+}
+/* user case case */
+:root{ --case-card-img-h: 203.41px; }
+.case-card{
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-3);
+  width: 100%;
+  @include fonts.copyTyCSS("paragraph","sm");
+  .card-img{
+      width: 100%;
+      min-height: var(--case-card-img-h);
+      position: relative;
+      overflow: hidden;
+      &::before{
+        content: "";
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: all 0.5s ease;
+        transform-origin: translate(50%, 50%);
+        background: linear-gradient( var(--color-dark-40a), var(--color-dark-40a))center/cover no-repeat;
+      }
+    }
+    
+  &:hover .card-img::before{
+    transform: scale(150%);
+    filter: blur(2px);
+    opacity: 0.6;
+  }
+  .card-content{
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-2);
+    width: 100%;
+    >*{ width: 100%; }
+    time{ @include fonts.copyTyCSS("paragraph","xsm");}
+    .labels{width: 100%; }
+    .card-title{
+      @include fonts.copyTyCSS("heading","xsm");
+    }
+    .btn{padding: var(--p-3);}
+  }
+}
+@include layout.media("xl") {
+  :root{ --case-card-img-h: 305.99px; }
+  .case-card{
+    @include fonts.copyTyCSS("paragraph","md");
+    .card-content{
+      time{ @include fonts.copyTyCSS("paragraph","sm");}
+      .labels{width: initial; }
+      .card-title{@include fonts.copyTyCSS("heading", "sm"); }
+      .google-symbols{font-size: 24px;}
+    }
+   }
 }
 /* project */
 .projects{
@@ -198,11 +261,11 @@
       }
     }
   }
-  @include grid.media("xl",true) using ($screen){
+  @include layout.media("xl",true) using ($screen){
     .project-card{
       max-width: 100%;
       min-height: 397px;
-      padding: var(--p-7);
+      padding: var(32px , --p-7);
       gap: var(--gap-6);
       align-items: stretch;
       background-image: url(../img/project_1.png);
@@ -287,7 +350,7 @@
     }
   }
 }
-@include grid.media("xl",true) using ($screen){
+@include layout.media("xl",true) using ($screen){
   :root{ --blog-card-img-h: 240px; }
   .blog{
     .blog-card{
@@ -302,10 +365,21 @@
     }
   }
 }
+/* Pullquote 引言 */
+.pullquote{
+  display: grid;
+  gap: var(--gap-2);
+  padding: var(--p-4);
+  background-color: var(--color-primary-50);
+}
+@include layout.media("xl") {
+  .pullquote{
+    padding: var(--p-6);
+  }
+}
 /*nav 導覽列*/
 // body{position: relative;overflow:hidden;}
-// body:has(.navbar .nav-toggle:active) {
-
+// body:has(.navbar .nav-toggle.active,.navbar .nav-toggle:active) {
 //   &::before{
 //     content: "";
 //     position: fixed;
@@ -362,7 +436,7 @@
       }
     }
   }
-@include grid.media("xl") {
+@include layout.media("xl") {
   .navbar{
     padding: var(--p-3) var(--p-8);
     .nav-toggle{display: none;}
@@ -395,7 +469,7 @@
     }
   }
 }
-@include grid.media("xl") {
+@include layout.media("xl") {
   .breadcrumbs{
     padding: var(--p-3) var(--p-8);
     .breadcrumb{
@@ -403,6 +477,156 @@
       @include fonts.copyTyCSS("label","md");
       li+li::before{ font-size: 24px; }
     }
-   }
+  }
+}
+  /* footer */
+.footer{
+  background-color: var(--color-primary-900);
+  color: var(--color-neutral-0);
+  padding: var(--p-8) var(--p-3);
+}
+@include layout.media("xl") {
+  .footer{
+    padding: var(--p-10) var(--p-8);
+  }
+  form{padding: var(--p-8);}
+}
+/* tab 標籤*/
+.tab-list,.tab-list-icon,.tab-link{
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--gap-1);
+}
+.tab-list,.tab-list-icon{
+  .tab-link{
+    padding: var(--p-2) var(--p-3);
+    background-color: var(--color-neutral-0);
+    color: var(--color-neutral-700);
+    &:hover{
+      background-color: var(--color-primary-50);
+    }
+    &.active{
+      background-color: var(--color-primary-900);
+      color: var(--color-neutral-0);
+    }
+  }
+  .tab-link,.tab-title{
+    @include fonts.copyTyCSS("heading","xxxsm");
+  }
+}
+.scroll-x{
+  .tab-list{
+    flex-wrap: nowrap;
+    justify-content: start;
+    .tab-link{
+      .tab-title{word-break: keep-all;}
+    }
+  }
+}
+
+.tab-list-icon{
+  .tab-link{
+  padding: var(--p-4) var(--p-3);}
+  .google-symbols{
+   display: block;width: 100%;
+  }
+  .tab-link,.tab-title{
+    @include fonts.copyTyCSS("heading","xxxxsm");
+  }
+  .tab-title strong{
+    @include fonts.copyTyCSS("heading","sm");
+  }
+}
+@include layout.media("xl") {
+  .tab-list {
+    li{flex:1;}
+  }
+  .tab-list,.tab-list-icon{
+    .tab-link{
+      padding: var(--p-3) var(--p-6);
+    }
+    .tab-link,.tab-title{
+      @include fonts.copyTyCSS("heading","xsm");
+    }
+    .tab-title strong{
+      @include fonts.copyTyCSS("heading","xxsm");
+    }
+  }
+  .scroll-x .tab-link .tab-title{@include fonts.copyTyCSS("heading","xxsm");}
+  .tab-list-icon .tab-link{
+    padding: var(--p-7);
+    gap: var(--gap-3);
+    .google-symbols{
+      font-size: 28px;
+    }
+    .tab-link,.tab-title{
+      @include fonts.copyTyCSS("heading","xxxsm");
+    }
+    .tab-title strong{
+      @include fonts.copyTyCSS("heading","md");
+    }
+  }
+}
+/* Stepper 流程 */
+:root{ --step-icon-size: 36px; }
+.stepper{
+  counter-reset: number;
+  @include fonts.copyTyCSS("paragraph","sm");
+  .step{
+    counter-increment: number; 
+    display: flex;
+    justify-self: start;
+    align-items: start;
+    gap: var(--gap-6);
+    position: relative;
+    .step-content{
+      order:1;
+      display: grid;
+      gap: var(--gap-3);
+      padding-bottom: var(--p-8);
+    }
+    &::before{
+      content: "";
+      position: absolute;
+      top: 1em;
+      left: 0;
+      width: calc((var(--step-icon-size)) / 2);
+      height: 100%;
+      border-right:1px solid;
+      z-index: 0;
+    }
+    &:nth-last-child(1)::before{ display: none; }
+    &::after,.step-icon{
+      content: counter(number);
+      position: relative;
+      z-index: 1;
+      order: 0;
+      border-radius: var(--round-fill);
+      background-color: var(--color-neutral-0);
+      color: var(--color-neutral-700);
+      @include fonts.copyTyCSS("paragraph","sm");
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: var(--p-1);
+      width: var(--step-icon-size);
+      height: var(--step-icon-size);
+      flex-shrink: 0;
+    }
+  }
+}
+@include layout.media("xl") {
+  :root{ --step-icon-size: 40px; }
+  .stepper{
+    @include fonts.copyTyCSS("paragraph","md");
+    .step{
+      &::after,.step-icon{
+        @include fonts.copyTyCSS("paragraph","md");
+      }
+    }
+  }
 }
 // /* －－－以上為一些全局的樣式，包含一些常用的 class */

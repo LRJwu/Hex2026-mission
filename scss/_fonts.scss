@@ -1,7 +1,7 @@
 @use "sass:map";
 @use "sass:string";
 @use "sass:list";
-@use "_grid" as grid;
+@use "_layout" as layout;
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 $Typography-types: "display", "heading", "label", "paragraph";
 $lh: 1.2, 1.5;
@@ -145,7 +145,7 @@ body {
 @include ty-same;
 @include generate-typography-classes;
 // 響應式文字樣式
-@each $media, $screen in grid.$media-breakpoints {
+@each $media, $screen in layout.$media-breakpoints {
     @media (min-width: $screen) {
         .text-#{$media}-center{ text-align: center; }
         .text-#{$media}-left{ text-align: left; }

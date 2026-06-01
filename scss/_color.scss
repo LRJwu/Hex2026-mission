@@ -39,5 +39,20 @@ $color:(
 .bg-primary{
     background-color: var(--color-primary-900);
     color:var(--color-neutral-0);
-}    
+}
+.text-white{
+    color: var(--color-neutral-0);
+}
+.text-dark{
+    color: var(--color-neutral-900);
+}
+.text-primary{
+    color: var(--color-primary-900);
+}
+.text-primary-50{
+    color: var(--color-primary-50);
+}
+.text-primary-500{
+    color: var(--color-primary-500);
+}
 /* －－－以上為 color樣式 */

@@ -1,4 +1,4 @@
-@use "_grid" as grid;
+@use "_layout" as layout;
 /* index.scss */
 .projects{
     ul .project-card:nth-child(1){background-image: url(../img/mobile/project_1.png);}
@@ -11,7 +11,7 @@
     li:nth-child(3) .blog-img::before{background-image: url(../img/blog_5.png);}
 }
 
-@include grid.media("xl",true) using ($screen){
+@include layout.media("xl",true) using ($screen){
   .projects{
       ul .project-card:nth-child(1){background-image: url(../img/project_1.png);}
       ul .project-card:nth-child(2){background-image: url(../img/project_2.png);}
