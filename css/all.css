@@ -2083,7 +2083,7 @@ body {
   --icon-size: 20px;
 }
 
-.breadcrumbs .breadcrumb li + li::before, .google-symbols, .material-symbols-outlined {
+.breadcrumbs .breadcrumb li + li::before, .collapse-list .collapse:after, .google-symbols, .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
   font-family: "Material Symbols Outlined";
 }
@@ -3258,6 +3258,87 @@ body {
   .stepper .step::after, .stepper .step .step-icon {
     font-size: var(--paragraph-md);
     font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 2%;
+  }
+}
+/* collapse-list */
+.collapse-list {
+  counter-reset: number;
+  font-size: var(--paragraph-sm);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 2%;
+}
+.collapse-list .collapse {
+  counter-increment: number;
+  border-bottom: 1px solid var(--color-primary-900);
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  gap: var(--gap-3);
+  width: 100%;
+  padding: var(--p-4);
+  position: relative;
+}
+.collapse-list .collapse:nth-last-child(1) {
+  border: none;
+}
+.collapse-list .collapse details[open] {
+  display: grid;
+  gap: var(--gap-2);
+}
+.collapse-list .collapse summary {
+  display: flex;
+  cursor: pointer;
+  width: 100%;
+}
+.collapse-list .collapse summary::marker {
+  display: none;
+  content: "";
+}
+.collapse-list .collapse::before, .collapse-list .collapse summary {
+  font-size: var(--heading-xxxsm);
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 2%;
+  min-width: 32px;
+  min-height: 28px;
+}
+.collapse-list .collapse::before {
+  content: counter(number, decimal-leading-zero);
+  position: relative;
+  flex-shrink: 0;
+}
+.collapse-list .collapse:after {
+  content: "keyboard_arrow_down";
+  font-size: 24px;
+  margin-left: auto;
+  line-height: 1;
+}
+.collapse-list .collapse:has(details[open]):after {
+  content: "keyboard_arrow_up";
+}
+.collapse-list .collapse:hover {
+  background-color: var(--color-primary-100);
+}
+
+@media (min-width: 1295px) {
+  .collapse-list {
+    font-size: var(--paragraph-md);
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 2%;
+  }
+  .collapse-list .collapse {
+    padding: var(--p-6);
+  }
+  .collapse-list .collapse details[open] {
+    gap: var(--gap-4);
+  }
+  .collapse-list .collapse::before, .collapse-list .collapse summary {
+    font-size: var(--heading-xxsm);
+    font-weight: 700;
     line-height: 1.5;
     letter-spacing: 2%;
   }

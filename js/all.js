@@ -1,6 +1,15 @@
 $('.nav-toggle').on('click', function () {
     $('.nav-menu').toggleClass('d-none');
 });
+$('.collapse').on('click', function (e) {
+    // 關鍵防護：如果使用者是直接點到 details 或 summary 本身，就不要重複觸發點擊
+    if ($(e.target).closest('summary').length) {
+        return;
+    }
+    
+    // 點擊 li 時，去觸發內部 summary 的點擊事件
+    $(this).find('summary').trigger('click');
+});
 
 $(document).ready(function () {
     const $slider = $('.scroll-x');
