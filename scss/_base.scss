@@ -35,14 +35,18 @@
     @include fonts.copyTyCSS("paragraph","sm");
   }
   
-  textarea{ min-height: 116px; border-radius: 32px; }
+  textarea{ min-height: 116px;}
   
   button{
     @include fonts.copyTyCSS("label","sm");
     padding: var(--p-3) var(--p-5);
   }
-
-  @include layout.media("xl") {
+}
+ @include layout.media("xl") {
+   :root{
+     --TF-radius: 40px;
+    }
+  .text-field {  
     input{
       @include fonts.copyTyCSS("paragraph","md");
       padding: var(--p-3) var(--p-6);}
@@ -50,7 +54,7 @@
       @include fonts.copyTyCSS("label","md");
       padding: var(--p-3) var(--p-6);
     }
-    textarea{ min-height: 116px; border-radius: 40px; }
+    textarea{ min-height: 120px;}
   }
 }
 /* Display 展示類 */
@@ -479,18 +483,6 @@
     }
   }
 }
-  /* footer */
-.footer{
-  background-color: var(--color-primary-900);
-  color: var(--color-neutral-0);
-  padding: var(--p-8) var(--p-3);
-}
-@include layout.media("xl") {
-  .footer{
-    padding: var(--p-10) var(--p-8);
-  }
-  form{padding: var(--p-8);}
-}
 /* tab 標籤*/
 .tab-list,.tab-list-icon,.tab-link{
   text-align: center;
@@ -627,6 +619,23 @@
         @include fonts.copyTyCSS("paragraph","md");
       }
     }
+  }
+}
+/* footer */
+.footer{
+  background-color: var(--color-primary-900);
+  color: var(--color-neutral-0);
+  padding: var(--p-8) var(--p-3);
+  .social-btns{
+    display: flex;
+    align-items: center;
+    gap: var(--gap-3);
+    a{padding: var(--p-3);}
+  }
+}
+@include layout.media("xl") {
+  .footer{
+    padding: var(--p-10) var(--p-8);
   }
 }
 // /* －－－以上為一些全局的樣式，包含一些常用的 class */
