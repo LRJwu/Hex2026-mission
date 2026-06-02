@@ -266,6 +266,7 @@
     }
   }
   @include layout.media("xl",true) using ($screen){
+    ul{ gap: var(--gap-6); }
     .project-card{
       max-width: 100%;
       min-height: 397px;

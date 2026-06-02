@@ -2837,6 +2837,9 @@ body {
   align-items: center;
 }
 @media (min-width: 1295px) {
+  .projects ul {
+    gap: var(--gap-6);
+  }
   .projects .project-card {
     max-width: 100%;
     min-height: 397px;
@@ -3376,6 +3379,9 @@ body {
 .projects ul .project-card:nth-child(3) {
   background-image: url(../img/mobile/project_3.png);
 }
+.projects ul .project-card:nth-child(4) {
+  background-image: url(../img/mobile/project_4.png);
+}
 
 .blog li:nth-child(2) .blog-img::before {
   background-image: url(../img/blog_4.png);
@@ -3396,6 +3402,9 @@ body {
   }
   .projects ul .project-card:nth-child(3) {
     background-image: url(../img/project_3.png);
+  }
+  .projects ul .project-card:nth-child(4) {
+    background-image: url(../img/project_4.png);
   }
 }
 /* service.scss */
