@@ -62,7 +62,7 @@ $css:(
                 $class-name: ".#{$type}-#{$screen}-#{$size}";
             }
             #{$class-name} {
-                font-size: var(--#{$type}-#{$size});
+                font-size: var(--#{$type}-#{$size})!important;
                 @if $screen == null {
                     @if $type == "display" {
                         @extend %Ty-xl;

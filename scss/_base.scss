@@ -3,6 +3,9 @@
 @use "_layout" as layout;
 @use "_fonts" as fonts;
 /* 以下為一些全局的樣式，包含一些常用的 class */
+body{
+  color: var(--color-neutral-700);
+}
 /* 操作類型 */
 :root {
   --TF-radius: 32px;
@@ -473,6 +476,11 @@
       @extend %icon;
     }
   }
+  .breadcrum-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 @include layout.media("xl") {
   .breadcrumbs{
@@ -481,6 +489,8 @@
       gap: var(--gap-2);
       @include fonts.copyTyCSS("label","md");
       li+li::before{ font-size: 24px; }
+      .breadcrum-item {  line-height: 1;  }
+
     }
   }
 }
@@ -623,7 +633,7 @@
     }
   }
 }
-/* collapse-list */
+/* collapse-list FQA 手風琴展開*/
 .collapse-list{
   counter-reset: number;
   @include fonts.copyTyCSS("paragraph","sm");
@@ -680,6 +690,74 @@
       &::before,summary{ @include fonts.copyTyCSS("heading","xxsm"); }
     }
   }
+}
+/* post 文章ＰＯ文*/
+.post{
+  // padding: var(--p-8) var(--p-3);
+  &,.post-header,.post-body,.post-footer,.figure{
+    gap: var(--gap-5);
+    display: grid;
+  }
+  .post-header,.figure{gap: var(--gap-2)}
+  .post-info,.post-body{@include fonts.copyTyCSS("paragraph","sm")}
+  .post-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .post-body{ padding: initial;}
+  h1{@include fonts.copyTyCSS("heading","md");}
+  h2{@include fonts.copyTyCSS("heading","sm");}
+  .figure{padding-top: var(--p-2);}
+  .post-footer{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-wrap: wrap;
+    .google-symbols, .bi { font-size: 24px; }
+  }
+  
+  @include layout.media("xl"){
+    &{
+      // padding: var(--p-10) var(--p-8);
+      &,.post-body{ gap: var(--gap-6); }
+      .post-header,.figure{gap: var(--gap-4)}
+      .post-info,.post-body{@include fonts.copyTyCSS("paragraph","md")}
+      h1{@include fonts.copyTyCSS("heading","xxlg");}
+      h2{@include fonts.copyTyCSS("heading","lg");}
+      .figure{padding-top: var(--p-4);}
+      .post-footer {
+        justify-content: space-between;
+        .google-symbols, .bi { font-size: 24px; }
+      }
+
+    }
+  }
+}
+/* table 表格 */
+.table{
+  // text-align: center;
+  td,th {
+    border: 1px solid var(--color-neutral-500);
+    vertical-align: middle;
+    padding: var(--p-2) var(--p-3);
+    word-break: break-all;
+    text-align: inherit;
+  }
+  thead{
+    color: var(--color-neutral-0);
+    background: var(--color-primary-900);
+  }
+  tbody{
+    background: var(--color-primary-50);
+    color: var(--color-primary-900);
+  }
+  @include layout.media("xl"){
+    td,th{
+      padding: var(--p-3) var(--p-6);
+    }
+  }
+  
 }
 /* footer */
 .footer{

@@ -145,6 +145,7 @@ section {
 @for $i from 1 through 6 {.order-#{$i} { order: $i; }}
 @for $i from 1 through $grid-coulmn {
     .col-#{$i} {
+        width: calc(100% / 12 * $i);
         max-width: calc((100% - var(--gap) * ($grid-coulmn - 1)) / $grid-coulmn * $i + var(--gap) * ($i - 1));
     }
 }
@@ -174,6 +175,7 @@ section {
         
         @for $i from 1 through $grid-coulmn {
             .col-#{$screen}-#{$i} {
+                width: calc(100% / 12 * $i);
                 max-width: calc((100% - var(--gap) * ($grid-coulmn - 1)) / $grid-coulmn * $i + var(--gap) * ($i - 1));
             }
         }
