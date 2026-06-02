@@ -7,9 +7,9 @@
     ul .project-card:nth-child(4){background-image: url(../img/mobile/project_4.png);}
 }
 .blog{
-    li:nth-child(2) .blog-img::before{background-image: url(../img/blog_4.png);}
-    li:nth-child(1) .blog-img::before{background-image: url(../img/blog_2.png);}
-    li:nth-child(3) .blog-img::before{background-image: url(../img/blog_5.png);}
+    li:nth-child(2) .card-img::before{background-image: url(../img/blog_4.png);}
+    li:nth-child(1) .card-img::before{background-image: url(../img/blog_2.png);}
+    li:nth-child(3) .card-img::before{background-image: url(../img/blog_5.png);}
 }
 
 @include layout.media("xl",true) using ($screen){

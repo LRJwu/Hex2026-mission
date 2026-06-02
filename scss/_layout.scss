@@ -65,6 +65,10 @@ $display:(
     "table":table, 
     "show":initial, 
 );
+$flex-wrap:(
+    "wrap":wrap,
+    "nowrap":nowrap
+);
 // 螢幕斷點的 mixin （專門負責印出 @media）
 @mixin media($breakpoint : null,$returnName: null) {
     @if map.has-key($media-breakpoints, $breakpoint) {
@@ -124,6 +128,7 @@ section {
 }
 //display樣式 $前綴,$變數名稱,root/樣式名稱,螢幕尺寸
 @include css(".d-", $display, "display");
+@include css(".f-", $flex-wrap, "flex-wrap");
 .flex {
     display: flex;
     gap: var(--gap-sm);
@@ -166,6 +171,7 @@ section {
         .overflow-#{$screen}-hidden { overflow: hidden; }
         .scroll-#{$screen}-x { overflow-x: scroll; overflow-y: hidden; }
         @include css(".d-", $display, "display", $screen);
+        @include css(".f-", $flex-wrap, "flex-wrap",$screen);
         @include css(".g-cols-", $grid-template-map, "grid-template-columns",$screen);
         @include css(".g-rows-", $grid-template-map, "grid-template-rows",$screen);
         @for $i from 1 through 6 {.g-start-#{$screen}-#{$i} { grid-column-start: $i; }}

@@ -104,6 +104,111 @@ body{
     }
   }
 }
+/* 共通card*/
+[class*="-card"]{
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-3);
+  width: 100%;
+  @include fonts.copyTyCSS("paragraph","sm");
+  .card-img{
+      width: 100%;
+      min-height: var(--case-card-img-h);
+      position: relative;
+      overflow: hidden;
+      &::before,&::after{
+        content: "";
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: all 0.5s ease;
+        transform-origin: translate(50%, 50%);
+        background: linear-gradient( var(--color-dark-40a))center/cover no-repeat;
+      }
+    }
+    
+  &:hover .card-img::before,&:hover .card-img::after{
+    transform: scale(150%);
+    filter: blur(2px);
+    opacity: 0.6;
+  }
+  .card-content{
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-2);
+    width: 100%;
+    >*{ width: 100%; }
+    time{ @include fonts.copyTyCSS("paragraph","xsm");}
+    .labels{width: 100%; }
+    .card-title{
+      @include fonts.copyTyCSS("heading","xsm");
+    }
+    .btn{padding: var(--p-3);}
+  }
+  @include layout.media("xl") {
+    &{
+      @include fonts.copyTyCSS("paragraph","md");
+      .card-content{
+        time{ @include fonts.copyTyCSS("paragraph","sm");}
+        .labels{width: initial; }
+        .card-title{@include fonts.copyTyCSS("heading", "sm"); }
+        .google-symbols{font-size: 24px;}
+      }
+     }
+  }
+}
+/* Blog card */
+:root{ --blog-card-img-h: 148.15px; }
+.blog-card{
+    min-width: 260px;
+    height: calc(100% - var(--blog-card-img-h) - var(--gap-3));
+  .card-img{
+    min-height: var(--blog-card-img-h);
+    &::after{display: none;}
+  }
+  .card-content{
+    time,u{@include fonts.copyTyCSS("paragraph","xsm");}
+    .post-meta{
+        margin-top: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--gap-2);
+        time{margin-right: auto;}
+        u{
+          display: inline-flex;
+          gap: var(--gap-1);
+          justify-content: center;
+          align-items: center;
+          flex-shrink: 0;
+        }
+      }
+      .google-symbols{ font-size: 20px; }
+  }
+}
+@include layout.media("xl"){
+  :root{ --blog-card-img-h: 240px; }
+  .blog-card{
+    &,.card-content{gap: var(--gap-3);}
+    .card-content{
+      .label{ @include fonts.copyTyCSS("paragraph", "md"); }
+      time,u{ @include fonts.copyTyCSS("paragraph", "sm"); }
+    }
+  }
+}
+/* user case card */
+:root{ --case-card-img-h: 203.41px; }
+.case-card{
+  .card-img{
+      min-height: var(--case-card-img-h);
+    }
+}
+@include layout.media("xl") {
+  :root{ --case-card-img-h: 305.99px; }
+}
 /* SERVICES */
 .services{
   .service-card{
@@ -170,64 +275,7 @@ body{
     }
   }
 }
-/* user case case */
-:root{ --case-card-img-h: 203.41px; }
-.case-card{
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--gap-3);
-  width: 100%;
-  @include fonts.copyTyCSS("paragraph","sm");
-  .card-img{
-      width: 100%;
-      min-height: var(--case-card-img-h);
-      position: relative;
-      overflow: hidden;
-      &::before,&::after{
-        content: "";
-        position: absolute;
-        display: block;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        transition: all 0.5s ease;
-        transform-origin: translate(50%, 50%);
-        background: linear-gradient( var(--color-dark-40a))center/cover no-repeat;
-      }
-    }
-    
-  &:hover .card-img::before,&:hover .card-img::after{
-    transform: scale(150%);
-    filter: blur(2px);
-    opacity: 0.6;
-  }
-  .card-content{
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap-2);
-    width: 100%;
-    >*{ width: 100%; }
-    time{ @include fonts.copyTyCSS("paragraph","xsm");}
-    .labels{width: 100%; }
-    .card-title{
-      @include fonts.copyTyCSS("heading","xsm");
-    }
-    .btn{padding: var(--p-3);}
-  }
-}
-@include layout.media("xl") {
-  :root{ --case-card-img-h: 305.99px; }
-  .case-card{
-    @include fonts.copyTyCSS("paragraph","md");
-    .card-content{
-      time{ @include fonts.copyTyCSS("paragraph","sm");}
-      .labels{width: initial; }
-      .card-title{@include fonts.copyTyCSS("heading", "sm"); }
-      .google-symbols{font-size: 24px;}
-    }
-   }
-}
+
 /* project */
 .projects{
 
@@ -286,91 +334,6 @@ body{
       }
     }
     
-  }
-}
-/* Blog card */
-:root{ --blog-card-img-h: 148.15px; }
-.blog{
-  gap: var(--gap-6);
-  .blog-card{
-    min-width: 260px;
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: stretch;
-    gap:var(--gap-2);
-    .blog-img{
-      width: 100%;
-      height: var(--blog-card-img-h);
-      position: relative;
-      overflow: hidden;
-      &::before{
-        content: "";
-        position: absolute;
-        display: block;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        transition: all 0.5s ease;
-        transform-origin: translate(50%, 50%);
-        background: linear-gradient( var(--color-dark-40a), var(--color-dark-40a))center/cover no-repeat;
-      }
-
-    }
-  &:hover .blog-img::before{
-    transform: scale(150%);
-    filter: blur(2px);
-    opacity: 0.6;
-  }
-    .card-content{
-      width: 100%;
-      height: calc(100% - var(--blog-card-img-h) - var(--gap-2));
-      display: flex;
-      flex-direction: column;
-      gap: var(--gap-2);
-      .card-title{
-        @include fonts.copyTyCSS("heading","xsm");
-      }
-      .label{
-        @include fonts.copyTyCSS("paragraph","sm");
-      }
-      time,u{
-        @include fonts.copyTyCSS("paragraph","xsm");
-      }
-      .post-meta{
-        margin-top: auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: var(--gap-2);
-        time{margin-right: auto;}
-        u{
-          display: inline-flex;
-          gap: var(--gap-1);
-          justify-content: center;
-          align-items: center;
-        }
-        .google-symbols{
-          font-size: 20px;
-        }
-      }
-    }
-  }
-}
-@include layout.media("xl",true) using ($screen){
-  :root{ --blog-card-img-h: 240px; }
-  .blog{
-    .blog-card{
-      gap: var(--gap-3);
-      // .blog-img{min-height: 240px;}
-      .card-content{
-        gap: var(--gap-3);
-        .card-title{@include fonts.copyTyCSS("heading", "sm"); }
-        .label{ @include fonts.copyTyCSS("paragraph", "md"); }
-        time,u{ @include fonts.copyTyCSS("paragraph", "sm"); }
-      }
-    }
   }
 }
 /* Pullquote 引言 */
