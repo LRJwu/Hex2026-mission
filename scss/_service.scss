@@ -1,0 +1,16 @@
+@use "_layout" as layout;
+/* service.scss */
+.services{
+   background: linear-gradient(var(--color-dark-40a)),url(../img/mobile/service_banner.png)top center/cover no-repeat;
+}
+ul .case-card:nth-child(1) .card-img::before{background-image: url(../img/service_case_1.png);}
+ul .case-card:nth-child(2) .card-img::before{background-image: url(../img/service_case_2.png);}
+
+@include layout.media("xl",true) using ($screen){
+    .services{
+        background-image: linear-gradient(var(--color-dark-40a)), url(../img/service_banner.png);
+    }
+
+
+}
+/* ———以上是 service.scss */

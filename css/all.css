@@ -2731,7 +2731,7 @@ body {
   position: relative;
   overflow: hidden;
 }
-.case-card .card-img::before {
+.case-card .card-img::before, .case-card .card-img::after {
   content: "";
   position: absolute;
   display: block;
@@ -2741,9 +2741,9 @@ body {
   height: 100%;
   transition: all 0.5s ease;
   transform-origin: translate(50%, 50%);
-  background: linear-gradient(var(--color-dark-40a), var(--color-dark-40a)) center/cover no-repeat;
+  background: linear-gradient(var(--color-dark-40a)) center/cover no-repeat;
 }
-.case-card:hover .card-img::before {
+.case-card:hover .card-img::before, .case-card:hover .card-img::after {
   transform: scale(150%);
   filter: blur(2px);
   opacity: 0.6;
@@ -3101,7 +3101,7 @@ body {
 .tab-list .tab-link:hover, .tab-list-icon .tab-link:hover {
   background-color: var(--color-primary-50);
 }
-.tab-list .tab-link.active, .tab-list-icon .tab-link.active {
+.tab-list .tab-link:active, .tab-list .tab-link.active, .tab-list-icon .tab-link:active, .tab-list-icon .tab-link.active {
   background-color: var(--color-primary-900);
   color: var(--color-neutral-0);
 }
@@ -3143,6 +3143,9 @@ body {
 @media (min-width: 1295px) {
   .tab-list li {
     flex: 1;
+  }
+  .tab-list-icon {
+    gap: var(--gap-6);
   }
   .tab-list .tab-link, .tab-list-icon .tab-link {
     padding: var(--p-3) var(--p-6);
@@ -3394,4 +3397,23 @@ body {
   .projects ul .project-card:nth-child(3) {
     background-image: url(../img/project_3.png);
   }
-}/*# sourceMappingURL=all.css.map */
+}
+/* service.scss */
+.services {
+  background: linear-gradient(var(--color-dark-40a)), url(../img/mobile/service_banner.png) top center/cover no-repeat;
+}
+
+ul .case-card:nth-child(1) .card-img::before {
+  background-image: url(../img/service_case_1.png);
+}
+
+ul .case-card:nth-child(2) .card-img::before {
+  background-image: url(../img/service_case_2.png);
+}
+
+@media (min-width: 1295px) {
+  .services {
+    background-image: linear-gradient(var(--color-dark-40a)), url(../img/service_banner.png);
+  }
+}
+/* ———以上是 service.scss *//*# sourceMappingURL=all.css.map */

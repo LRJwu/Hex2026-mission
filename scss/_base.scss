@@ -180,7 +180,7 @@
       min-height: var(--case-card-img-h);
       position: relative;
       overflow: hidden;
-      &::before{
+      &::before,&::after{
         content: "";
         position: absolute;
         display: block;
@@ -190,11 +190,11 @@
         height: 100%;
         transition: all 0.5s ease;
         transform-origin: translate(50%, 50%);
-        background: linear-gradient( var(--color-dark-40a), var(--color-dark-40a))center/cover no-repeat;
+        background: linear-gradient( var(--color-dark-40a))center/cover no-repeat;
       }
     }
     
-  &:hover .card-img::before{
+  &:hover .card-img::before,&:hover .card-img::after{
     transform: scale(150%);
     filter: blur(2px);
     opacity: 0.6;
@@ -500,7 +500,7 @@
     &:hover{
       background-color: var(--color-primary-50);
     }
-    &.active{
+    &:active,&.active{
       background-color: var(--color-primary-900);
       color: var(--color-neutral-0);
     }
@@ -536,6 +536,7 @@
   .tab-list {
     li{flex:1;}
   }
+  .tab-list-icon{gap: var(--gap-6);}
   .tab-list,.tab-list-icon{
     .tab-link{
       padding: var(--p-3) var(--p-6);
