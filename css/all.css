@@ -3408,7 +3408,7 @@ body {
   }
 }
 /* service.scss */
-.services {
+.services_banner {
   background: linear-gradient(var(--color-dark-40a)), url(../img/mobile/service_banner.png) top center/cover no-repeat;
 }
 
@@ -3421,8 +3421,19 @@ ul .case-card:nth-child(2) .card-img::before {
 }
 
 @media (min-width: 1295px) {
-  .services {
+  .services_banner {
     background-image: linear-gradient(var(--color-dark-40a)), url(../img/service_banner.png);
   }
 }
-/* ———以上是 service.scss *//*# sourceMappingURL=all.css.map */
+/* ———以上是 service.scss */
+/* projects.scss */
+.projects_banner {
+  background: linear-gradient(var(--color-dark-40a)), url(../img/mobile/project_banner.png) center/cover no-repeat;
+}
+
+@media (min-width: 1295px) {
+  .projects_banner {
+    background-image: linear-gradient(var(--color-dark-40a)), url(../img/project_banner.png);
+  }
+}
+/* ———以上是 projects.scss *//*# sourceMappingURL=all.css.map */

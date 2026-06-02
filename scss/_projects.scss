@@ -1,0 +1,14 @@
+@use "_layout" as layout;
+/* projects.scss */
+.projects_banner{
+   background: linear-gradient(var(--color-dark-40a)),url(../img/mobile/project_banner.png)center/cover no-repeat;
+}
+
+@include layout.media("xl",true) using ($screen){
+    .projects_banner{
+        background-image: linear-gradient(var(--color-dark-40a)), url(../img/project_banner.png);
+    }
+
+
+}
+/* ———以上是 projects.scss */

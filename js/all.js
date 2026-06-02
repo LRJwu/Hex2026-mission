@@ -1,6 +1,11 @@
+//  導航選單切換
 $('.nav-toggle').on('click', function () {
     $('.nav-menu').toggleClass('d-none');
 });
+// 滾動動畫
+AOS.init();
+
+// 點擊 .collapse 元素時，觸發內部 summary 的點擊事件
 $('.collapse').on('click', function (e) {
     // 關鍵防護：如果使用者是直接點到 details 或 summary 本身，就不要重複觸發點擊
     if ($(e.target).closest('summary').length) {
