@@ -281,6 +281,30 @@ section, .banner .right {
   grid-column-start: 6;
 }
 
+.g-start-7 {
+  grid-column-start: 7;
+}
+
+.g-start-8 {
+  grid-column-start: 8;
+}
+
+.g-start-9 {
+  grid-column-start: 9;
+}
+
+.g-start-10 {
+  grid-column-start: 10;
+}
+
+.g-start-11 {
+  grid-column-start: 11;
+}
+
+.g-start-12 {
+  grid-column-start: 12;
+}
+
 .g-row-1 {
   grid-row: 1;
 }
@@ -303,6 +327,30 @@ section, .banner .right {
 
 .g-row-6 {
   grid-row: 6;
+}
+
+.g-row-7 {
+  grid-row: 7;
+}
+
+.g-row-8 {
+  grid-row: 8;
+}
+
+.g-row-9 {
+  grid-row: 9;
+}
+
+.g-row-10 {
+  grid-row: 10;
+}
+
+.g-row-11 {
+  grid-row: 11;
+}
+
+.g-row-12 {
+  grid-row: 12;
 }
 
 .g-rowspan-1 {
@@ -329,6 +377,78 @@ section, .banner .right {
   grid-row: span 6;
 }
 
+.g-rowspan-7 {
+  grid-row: span 7;
+}
+
+.g-rowspan-8 {
+  grid-row: span 8;
+}
+
+.g-rowspan-9 {
+  grid-row: span 9;
+}
+
+.g-rowspan-10 {
+  grid-row: span 10;
+}
+
+.g-rowspan-11 {
+  grid-row: span 11;
+}
+
+.g-rowspan-12 {
+  grid-row: span 12;
+}
+
+.g-colspan-1 {
+  grid-column: span 1;
+}
+
+.g-colspan-2 {
+  grid-column: span 2;
+}
+
+.g-colspan-3 {
+  grid-column: span 3;
+}
+
+.g-colspan-4 {
+  grid-column: span 4;
+}
+
+.g-colspan-5 {
+  grid-column: span 5;
+}
+
+.g-colspan-6 {
+  grid-column: span 6;
+}
+
+.g-colspan-7 {
+  grid-column: span 7;
+}
+
+.g-colspan-8 {
+  grid-column: span 8;
+}
+
+.g-colspan-9 {
+  grid-column: span 9;
+}
+
+.g-colspan-10 {
+  grid-column: span 10;
+}
+
+.g-colspan-11 {
+  grid-column: span 11;
+}
+
+.g-colspan-12 {
+  grid-column: span 12;
+}
+
 .order-1 {
   order: 1;
 }
@@ -351,6 +471,30 @@ section, .banner .right {
 
 .order-6 {
   order: 6;
+}
+
+.order-7 {
+  order: 7;
+}
+
+.order-8 {
+  order: 8;
+}
+
+.order-9 {
+  order: 9;
+}
+
+.order-10 {
+  order: 10;
+}
+
+.order-11 {
+  order: 11;
+}
+
+.order-12 {
+  order: 12;
 }
 
 .col-1 {
@@ -552,6 +696,24 @@ section, .banner .right {
   .g-start-xl-6 {
     grid-column-start: 6;
   }
+  .g-start-xl-7 {
+    grid-column-start: 7;
+  }
+  .g-start-xl-8 {
+    grid-column-start: 8;
+  }
+  .g-start-xl-9 {
+    grid-column-start: 9;
+  }
+  .g-start-xl-10 {
+    grid-column-start: 10;
+  }
+  .g-start-xl-11 {
+    grid-column-start: 11;
+  }
+  .g-start-xl-12 {
+    grid-column-start: 12;
+  }
   .g-row-xl-1 {
     grid-row: 1;
   }
@@ -569,6 +731,24 @@ section, .banner .right {
   }
   .g-row-xl-6 {
     grid-row: 6;
+  }
+  .g-row-xl-7 {
+    grid-row: 7;
+  }
+  .g-row-xl-8 {
+    grid-row: 8;
+  }
+  .g-row-xl-9 {
+    grid-row: 9;
+  }
+  .g-row-xl-10 {
+    grid-row: 10;
+  }
+  .g-row-xl-11 {
+    grid-row: 11;
+  }
+  .g-row-xl-12 {
+    grid-row: 12;
   }
   .g-rowspan-xl-1 {
     grid-row: span 1;
@@ -588,6 +768,60 @@ section, .banner .right {
   .g-rowspan-xl-6 {
     grid-row: span 6;
   }
+  .g-rowspan-xl-7 {
+    grid-row: span 7;
+  }
+  .g-rowspan-xl-8 {
+    grid-row: span 8;
+  }
+  .g-rowspan-xl-9 {
+    grid-row: span 9;
+  }
+  .g-rowspan-xl-10 {
+    grid-row: span 10;
+  }
+  .g-rowspan-xl-11 {
+    grid-row: span 11;
+  }
+  .g-rowspan-xl-12 {
+    grid-row: span 12;
+  }
+  .g-colspan-xl-1 {
+    grid-column: span 1;
+  }
+  .g-colspan-xl-2 {
+    grid-column: span 2;
+  }
+  .g-colspan-xl-3 {
+    grid-column: span 3;
+  }
+  .g-colspan-xl-4 {
+    grid-column: span 4;
+  }
+  .g-colspan-xl-5 {
+    grid-column: span 5;
+  }
+  .g-colspan-xl-6 {
+    grid-column: span 6;
+  }
+  .g-colspan-xl-7 {
+    grid-column: span 7;
+  }
+  .g-colspan-xl-8 {
+    grid-column: span 8;
+  }
+  .g-colspan-xl-9 {
+    grid-column: span 9;
+  }
+  .g-colspan-xl-10 {
+    grid-column: span 10;
+  }
+  .g-colspan-xl-11 {
+    grid-column: span 11;
+  }
+  .g-colspan-xl-12 {
+    grid-column: span 12;
+  }
   .order-xl-1 {
     order: 1;
   }
@@ -605,6 +839,24 @@ section, .banner .right {
   }
   .order-xl-6 {
     order: 6;
+  }
+  .order-xl-7 {
+    order: 7;
+  }
+  .order-xl-8 {
+    order: 8;
+  }
+  .order-xl-9 {
+    order: 9;
+  }
+  .order-xl-10 {
+    order: 10;
+  }
+  .order-xl-11 {
+    order: 11;
+  }
+  .order-xl-12 {
+    order: 12;
   }
   .col-xl-1 {
     width: 8.3333333333%;
@@ -701,7 +953,7 @@ section, .banner .right {
   --gap-6: 24px;
   --gap-7: 32px;
   --gap-8: 40px;
-  --gap-9: 64px;
+  --gap-9: 60px;
   --gap-10: 80px;
   --gap-auto: auto;
   /* 以上為 gap 的變數 */
@@ -714,7 +966,7 @@ section, .banner .right {
   --p-6: 24px;
   --p-7: 32px;
   --p-8: 40px;
-  --p-9: 64px;
+  --p-9: 60px;
   --p-10: 80px;
   --p-auto: auto;
   --m-0: 0;
@@ -726,7 +978,7 @@ section, .banner .right {
   --m-6: 24px;
   --m-7: 32px;
   --m-8: 40px;
-  --m-9: 64px;
+  --m-9: 60px;
   --m-10: 80px;
   --m-auto: auto;
 }
@@ -768,7 +1020,7 @@ section, .banner .right {
 }
 
 .g-9 {
-  gap: 64px !important;
+  gap: 60px !important;
 }
 
 .g-10 {
@@ -816,7 +1068,7 @@ section, .banner .right {
 }
 
 .p-9 {
-  padding: 64px !important;
+  padding: 60px !important;
 }
 
 .p-10 {
@@ -864,7 +1116,7 @@ section, .banner .right {
 }
 
 .pt-9 {
-  padding-top: 64px !important;
+  padding-top: 60px !important;
 }
 
 .pt-10 {
@@ -912,7 +1164,7 @@ section, .banner .right {
 }
 
 .pb-9 {
-  padding-bottom: 64px !important;
+  padding-bottom: 60px !important;
 }
 
 .pb-10 {
@@ -960,7 +1212,7 @@ section, .banner .right {
 }
 
 .pl-9 {
-  padding-left: 64px !important;
+  padding-left: 60px !important;
 }
 
 .pl-10 {
@@ -1008,7 +1260,7 @@ section, .banner .right {
 }
 
 .pr-9 {
-  padding-right: 64px !important;
+  padding-right: 60px !important;
 }
 
 .pr-10 {
@@ -1065,8 +1317,8 @@ section, .banner .right {
 }
 
 .px-9 {
-  padding-left: 64px !important;
-  padding-right: 64px !important;
+  padding-left: 60px !important;
+  padding-right: 60px !important;
 }
 
 .px-10 {
@@ -1125,8 +1377,8 @@ section, .banner .right {
 }
 
 .py-9 {
-  padding-top: 64px !important;
-  padding-bottom: 64px !important;
+  padding-top: 60px !important;
+  padding-bottom: 60px !important;
 }
 
 .py-10 {
@@ -1176,7 +1428,7 @@ section, .banner .right {
 }
 
 .m-9 {
-  margin: 64px !important;
+  margin: 60px !important;
 }
 
 .m-10 {
@@ -1224,7 +1476,7 @@ section, .banner .right {
 }
 
 .mt-9 {
-  margin-top: 64px !important;
+  margin-top: 60px !important;
 }
 
 .mt-10 {
@@ -1272,7 +1524,7 @@ section, .banner .right {
 }
 
 .mb-9 {
-  margin-bottom: 64px !important;
+  margin-bottom: 60px !important;
 }
 
 .mb-10 {
@@ -1320,7 +1572,7 @@ section, .banner .right {
 }
 
 .ml-9 {
-  margin-left: 64px !important;
+  margin-left: 60px !important;
 }
 
 .ml-10 {
@@ -1368,7 +1620,7 @@ section, .banner .right {
 }
 
 .mr-9 {
-  margin-right: 64px !important;
+  margin-right: 60px !important;
 }
 
 .mr-10 {
@@ -1425,8 +1677,8 @@ section, .banner .right {
 }
 
 .mx-9 {
-  margin-left: 64px !important;
-  margin-right: 64px !important;
+  margin-left: 60px !important;
+  margin-right: 60px !important;
 }
 
 .mx-10 {
@@ -1485,8 +1737,8 @@ section, .banner .right {
 }
 
 .my-9 {
-  margin-top: 64px !important;
-  margin-bottom: 64px !important;
+  margin-top: 60px !important;
+  margin-bottom: 60px !important;
 }
 
 .my-10 {
@@ -1528,7 +1780,7 @@ section, .banner .right {
     gap: 40px !important;
   }
   .g-xl-9 {
-    gap: 64px !important;
+    gap: 60px !important;
   }
   .g-xl-10 {
     gap: 80px !important;
@@ -1564,7 +1816,7 @@ section, .banner .right {
     padding: 40px !important;
   }
   .p-xl-9 {
-    padding: 64px !important;
+    padding: 60px !important;
   }
   .p-xl-10 {
     padding: 80px !important;
@@ -1600,7 +1852,7 @@ section, .banner .right {
     padding-top: 40px !important;
   }
   .pt-xl-9 {
-    padding-top: 64px !important;
+    padding-top: 60px !important;
   }
   .pt-xl-10 {
     padding-top: 80px !important;
@@ -1636,7 +1888,7 @@ section, .banner .right {
     padding-bottom: 40px !important;
   }
   .pb-xl-9 {
-    padding-bottom: 64px !important;
+    padding-bottom: 60px !important;
   }
   .pb-xl-10 {
     padding-bottom: 80px !important;
@@ -1672,7 +1924,7 @@ section, .banner .right {
     padding-left: 40px !important;
   }
   .pl-xl-9 {
-    padding-left: 64px !important;
+    padding-left: 60px !important;
   }
   .pl-xl-10 {
     padding-left: 80px !important;
@@ -1708,7 +1960,7 @@ section, .banner .right {
     padding-right: 40px !important;
   }
   .pr-xl-9 {
-    padding-right: 64px !important;
+    padding-right: 60px !important;
   }
   .pr-xl-10 {
     padding-right: 80px !important;
@@ -1753,8 +2005,8 @@ section, .banner .right {
     padding-right: 40px !important;
   }
   .px-xl-9 {
-    padding-left: 64px !important;
-    padding-right: 64px !important;
+    padding-left: 60px !important;
+    padding-right: 60px !important;
   }
   .px-xl-10 {
     padding-left: 80px !important;
@@ -1801,8 +2053,8 @@ section, .banner .right {
     padding-bottom: 40px !important;
   }
   .py-xl-9 {
-    padding-top: 64px !important;
-    padding-bottom: 64px !important;
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
   }
   .py-xl-10 {
     padding-top: 80px !important;
@@ -1840,7 +2092,7 @@ section, .banner .right {
     margin: 40px !important;
   }
   .m-xl-9 {
-    margin: 64px !important;
+    margin: 60px !important;
   }
   .m-xl-10 {
     margin: 80px !important;
@@ -1876,7 +2128,7 @@ section, .banner .right {
     margin-top: 40px !important;
   }
   .mt-xl-9 {
-    margin-top: 64px !important;
+    margin-top: 60px !important;
   }
   .mt-xl-10 {
     margin-top: 80px !important;
@@ -1912,7 +2164,7 @@ section, .banner .right {
     margin-bottom: 40px !important;
   }
   .mb-xl-9 {
-    margin-bottom: 64px !important;
+    margin-bottom: 60px !important;
   }
   .mb-xl-10 {
     margin-bottom: 80px !important;
@@ -1948,7 +2200,7 @@ section, .banner .right {
     margin-left: 40px !important;
   }
   .ml-xl-9 {
-    margin-left: 64px !important;
+    margin-left: 60px !important;
   }
   .ml-xl-10 {
     margin-left: 80px !important;
@@ -1984,7 +2236,7 @@ section, .banner .right {
     margin-right: 40px !important;
   }
   .mr-xl-9 {
-    margin-right: 64px !important;
+    margin-right: 60px !important;
   }
   .mr-xl-10 {
     margin-right: 80px !important;
@@ -2029,8 +2281,8 @@ section, .banner .right {
     margin-right: 40px !important;
   }
   .mx-xl-9 {
-    margin-left: 64px !important;
-    margin-right: 64px !important;
+    margin-left: 60px !important;
+    margin-right: 60px !important;
   }
   .mx-xl-10 {
     margin-left: 80px !important;
@@ -2077,8 +2329,8 @@ section, .banner .right {
     margin-bottom: 40px !important;
   }
   .my-xl-9 {
-    margin-top: 64px !important;
-    margin-bottom: 64px !important;
+    margin-top: 60px !important;
+    margin-bottom: 60px !important;
   }
   .my-xl-10 {
     margin-top: 80px !important;
@@ -3517,6 +3769,40 @@ body {
   }
 }
 /* index.scss */
+.into_banner {
+  background-color: var(--color-primary-50);
+  position: relative;
+}
+.into_banner .illus {
+  position: absolute;
+  pointer-events: none;
+  display: none;
+}
+.into_banner .illus[src*="1.png"] {
+  display: block;
+  width: 80px;
+  top: 26px;
+  left: -15px;
+}
+.into_banner .illus[src*="2.png"] {
+  display: block;
+  width: 80px;
+  top: 274px;
+  right: -13px;
+}
+.into_banner .illus[src*="3.png"] {
+  display: block;
+  width: 80px;
+  top: 414px;
+  right: 34px;
+}
+.into_banner .illus[src*="6.png"] {
+  display: block;
+  width: 113.14px;
+  top: 398.41px;
+  right: 114.5px;
+}
+
 .projects ul .project-card:nth-child(1) {
   background-image: url(../img/mobile/project_1.png);
 }
@@ -3530,17 +3816,55 @@ body {
   background-image: url(../img/mobile/project_4.png);
 }
 
-.blog li:nth-child(2) .card-img::before {
-  background-image: url(../img/blog_4.png);
-}
 .blog li:nth-child(1) .card-img::before {
   background-image: url(../img/blog_2.png);
+}
+.blog li:nth-child(2) .card-img::before {
+  background-image: url(../img/blog_4.png);
 }
 .blog li:nth-child(3) .card-img::before {
   background-image: url(../img/blog_5.png);
 }
 
 @media (min-width: 1295px) {
+  .into_banner .illus[src*="1.png"] {
+    display: block;
+    top: 12.125%;
+    left: 40.6770833333%;
+  }
+  .into_banner .illus[src*="2.png"] {
+    display: block;
+    bottom: 10.875%;
+    right: 12.0833333333%;
+  }
+  .into_banner .illus[src*="3.png"] {
+    display: block;
+    top: 7%;
+    left: 4.4791666667%;
+  }
+  .into_banner :nth-child(2 of .illus[src*="3.png"]) {
+    display: block;
+    width: 80px;
+    top: initial;
+    bottom: 24%;
+    left: 36.6145833333%;
+  }
+  .into_banner :nth-child(3 of .illus[src*="3.png"]) {
+    display: block;
+    top: 32.5%;
+    left: initial;
+    right: 7.3958333333%;
+  }
+  .into_banner .illus[src*="4.png"] {
+    display: block;
+    top: 15%;
+    left: 13.28125%;
+  }
+  .into_banner .illus[src*="5.png"] {
+    display: block;
+    bottom: 10.375%;
+    left: 27.2395833333%;
+  }
   .projects ul .project-card:nth-child(1) {
     background-image: url(../img/project_1.png);
   }

@@ -1,5 +1,38 @@
 @use "_layout" as layout;
 /* index.scss */
+.into_banner{
+    background-color: var(--color-primary-50);
+    position: relative;
+    .illus{
+        position: absolute;
+        pointer-events: none;
+        display: none;
+    }
+    .illus[src*="1.png"]{
+        display: block;
+        width: 80px;
+        top:   26px;
+        left:  -15px;
+    }
+    .illus[src*="2.png"]{
+        display: block;
+        width: 80px;
+        top:   274px;
+        right:  -13px;
+    }
+    .illus[src*="3.png"]{
+        display: block;
+        width: 80px;
+        top:   414px;
+        right: 34px;
+    }
+    .illus[src*="6.png"]{
+        display: block;
+        width: 113.14px;
+        top:   398.41px;
+        right: 114.5px;
+    }
+}
 .projects{
     ul .project-card:nth-child(1){background-image: url(../img/mobile/project_1.png);}
     ul .project-card:nth-child(2){background-image: url(../img/mobile/project_2.png);}
@@ -7,16 +40,56 @@
     ul .project-card:nth-child(4){background-image: url(../img/mobile/project_4.png);}
 }
 .blog{
-    li:nth-child(2) .card-img::before{background-image: url(../img/blog_4.png);}
     li:nth-child(1) .card-img::before{background-image: url(../img/blog_2.png);}
+    li:nth-child(2) .card-img::before{background-image: url(../img/blog_4.png);}
     li:nth-child(3) .card-img::before{background-image: url(../img/blog_5.png);}
 }
 
 @include layout.media("xl",true) using ($screen){
-  .projects{
-      ul .project-card:nth-child(1){background-image: url(../img/project_1.png);}
-      ul .project-card:nth-child(2){background-image: url(../img/project_2.png);}
-      ul .project-card:nth-child(3){background-image: url(../img/project_3.png);}
-      ul .project-card:nth-child(4){background-image: url(../img/project_4.png);}
-  }
+    .into_banner{
+        .illus[src*="1.png"]{
+            display: block;
+            top:   calc(97 / 800 * 100%);
+            left:  calc(781 / 1920 * 100%);
+        }
+        .illus[src*="2.png"]{
+            display: block;
+            bottom:calc(87 / 800 * 100%);
+            right: calc(232 / 1920 * 100%);
+        }
+        .illus[src*="3.png"]{
+            display: block;
+            top:   calc(56 / 800 * 100%);
+            left:  calc(86 / 1920 * 100%);
+        }
+        :nth-child(2 of .illus[src*="3.png"]){
+            display: block;
+            width: 80px;
+            top:initial;
+            bottom:calc(192 / 800 * 100%);
+            left:  calc(703 / 1920 * 100%);
+        }
+        :nth-child(3 of .illus[src*="3.png"]){
+            display: block;
+            top:   calc(260 / 800 * 100%);
+            left: initial;
+            right: calc(142 / 1920 * 100%);
+        }
+        .illus[src*="4.png"]{
+            display: block;
+            top:   calc(120 / 800 * 100%);
+            left:  calc(255 / 1920 * 100%);
+        }
+        .illus[src*="5.png"]{
+            display: block;
+            bottom:calc(83 / 800 * 100%);
+            left:  calc(523 / 1920 * 100%);
+        }
+    }
+    .projects{
+        ul .project-card:nth-child(1){background-image: url(../img/project_1.png);}
+        ul .project-card:nth-child(2){background-image: url(../img/project_2.png);}
+        ul .project-card:nth-child(3){background-image: url(../img/project_3.png);}
+        ul .project-card:nth-child(4){background-image: url(../img/project_4.png);}
+    }
 }

@@ -33,7 +33,8 @@ $spacing:(
   7 : 32px,
   8 : 40px,
   // "8" : 48px,
-  9 : 64px,
+//   9 : 64px,
+  9 : 60px,
   10: 80px,
   "auto": auto,
 );
@@ -144,10 +145,11 @@ section {
 
 @include css(".g-cols-", $grid-template-map, "grid-template-columns");
 @include css(".g-rows-", $grid-template-map, "grid-template-rows");
-@for $i from 1 through 6 {.g-start-#{$i} { grid-column-start: $i; }}
-@for $i from 1 through 6 {.g-row-#{$i} { grid-row: $i; }}
-@for $i from 1 through 6 {.g-rowspan-#{$i} { grid-row: span $i; }}
-@for $i from 1 through 6 {.order-#{$i} { order: $i; }}
+@for $i from 1 through $grid-coulmn {.g-start-#{$i} { grid-column-start: $i; }}
+@for $i from 1 through $grid-coulmn {.g-row-#{$i} { grid-row: $i; }}
+@for $i from 1 through $grid-coulmn {.g-rowspan-#{$i} { grid-row: span $i; }}
+@for $i from 1 through $grid-coulmn {.g-colspan-#{$i} { grid-column: span $i; }}
+@for $i from 1 through $grid-coulmn {.order-#{$i} { order: $i; }}
 @for $i from 1 through $grid-coulmn {
     .col-#{$i} {
         width: calc(100% / 12 * $i);
@@ -174,10 +176,11 @@ section {
         @include css(".f-", $flex-wrap, "flex-wrap",$screen);
         @include css(".g-cols-", $grid-template-map, "grid-template-columns",$screen);
         @include css(".g-rows-", $grid-template-map, "grid-template-rows",$screen);
-        @for $i from 1 through 6 {.g-start-#{$screen}-#{$i} { grid-column-start: $i; }}
-        @for $i from 1 through 6 {.g-row-#{$screen}-#{$i} { grid-row: $i; }}
-        @for $i from 1 through 6 {.g-rowspan-#{$screen}-#{$i} { grid-row: span $i; }}
-        @for $i from 1 through 6 {.order-#{$screen}-#{$i} { order: $i; }}
+        @for $i from 1 through $grid-coulmn {.g-start-#{$screen}-#{$i} { grid-column-start: $i; }}
+        @for $i from 1 through $grid-coulmn {.g-row-#{$screen}-#{$i} { grid-row: $i; }}
+        @for $i from 1 through $grid-coulmn {.g-rowspan-#{$screen}-#{$i} { grid-row: span $i; }}
+        @for $i from 1 through $grid-coulmn {.g-colspan-#{$screen}-#{$i} { grid-column: span $i; }}
+        @for $i from 1 through $grid-coulmn {.order-#{$screen}-#{$i} { order: $i; }}
         
         @for $i from 1 through $grid-coulmn {
             .col-#{$screen}-#{$i} {
