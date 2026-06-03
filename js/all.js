@@ -1,6 +1,11 @@
 //  導航選單切換
 $('.nav-toggle').on('click', function () {
     $('.nav-menu').toggleClass('d-none');
+    if($('i.modal-overlay.d-block').length === 0){
+        $('body').append('<i class="modal-overlay d-block"></i>')
+    }else{
+        $('i.modal-overlay.d-block').remove();
+    }
 });
 // 滾動動畫
 AOS.init();
@@ -16,6 +21,29 @@ $('.collapse').on('click', function (e) {
     $(this).find('summary').trigger('click');
 });
 
+//Modal
+//  1. 運用 querySelectorAll 抓取所有的聯絡按鈕 與 關閉按鈕
+const contactButtons = document.querySelectorAll('.openModal');
+const closeBtn = document.querySelectorAll('.closeModalBtn');
+
+// 2. 抓取 Modal
+const modal = document.getElementById('Modal');
+
+// 3. 幫每一個聯絡按鈕都加上開啟 Modal 的監聽器
+contactButtons.forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    modal.classList.remove('d-none'); // 刪除 d-none，視窗彈出
+  });
+});
+
+// 4. 幫關閉按鈕加上隱藏 Modal 的監聽器
+closeBtn.forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    modal.classList.add('d-none'); // 加上 d-none，視窗彈出
+  });
+});
+
+// 滑鼠左右滑動
 $(document).ready(function () {
     const $slider = $('.scroll-x');
     let isDown = false;

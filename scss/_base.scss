@@ -348,22 +348,43 @@ body{
     padding: var(--p-6);
   }
 }
-/*nav 導覽列*/
-// body{position: relative;overflow:hidden;}
-// body:has(.navbar .nav-toggle.active,.navbar .nav-toggle:active) {
-//   &::before{
-//     content: "";
-//     position: fixed;
-//     top: 0;
-//     left: 0;
-//     width: 100vw;
-//     height: 100vh;
-//     background-color: var(--color-dark-60a);
-//     backdrop-filter: blur(1px);
-//     z-index: 99;
-//     pointer-events: none;
-//   }
-// }
+/*nav 導覽列 和 彈出視窗*/
+body{position: relative;}
+.modal-overlay{
+  width: 100vw;
+  min-height: 100%;
+  padding: 10vh 0;
+  background-color: var(--color-dark-60a);
+  backdrop-filter: blur(1px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  &:has(.modal-content){
+    z-index: 999;
+    overflow-y: auto;
+  }
+  .modal-content{
+    // display: none;
+    position: fixed;
+    z-index: 1000;
+    transform: translate(-50%,0%);
+    top: 8vh;
+    left:50%;
+    min-height: 50vh;
+    min-width: layout.$min-width - layout.$grid-gap;
+    max-width: layout.$max-width;
+  }
+  .modal-header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-neutral-0);
+  }
+
+}
+
 
 .navbar{
   position:sticky;
