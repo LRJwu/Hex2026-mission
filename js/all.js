@@ -85,6 +85,9 @@ $(document).ready(function () {
         }
     });
 });
+
+// 滾動動畫
+AOS.init();
 // 首頁滑鼠視差
 const container = document.querySelector('.layerBox');
 const Layers = document.querySelectorAll('.illus');
@@ -114,6 +117,3 @@ container.addEventListener('mouseleave', () => {
   
   // 註：若有搭配 CSS 的 transition: transform 0.3s ease，效果會更平滑
 });
-
-// 滾動動畫
-AOS.init();
