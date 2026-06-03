@@ -122,6 +122,7 @@ $flex-wrap:(
     margin: 0 auto;
 }
 section {
+    overflow: hidden;
     padding: var(--p-8) var(--p-3);
      @include media("xl") {
         padding: var(--p-10) var(--p-8);

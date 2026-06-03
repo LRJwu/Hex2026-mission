@@ -137,6 +137,7 @@ button {
 }
 
 section, .banner .right {
+  overflow: hidden;
   padding: var(--p-8) var(--p-3);
 }
 @media (min-width: 1295px) {
