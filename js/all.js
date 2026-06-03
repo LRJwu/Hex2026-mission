@@ -85,5 +85,35 @@ $(document).ready(function () {
         }
     });
 });
+// 首頁滑鼠視差
+const container = document.querySelector('.layerBox');
+const Layers = document.querySelectorAll('.illus');
+
+container.addEventListener('mousemove', (e) => {
+  // 取得容器的寬高與中心點
+  const { width, height, left, top } = container.getBoundingClientRect();
+  const centerX = left + width / 2;
+  const centerY = top + height / 2;
+
+  Layers.forEach((l) =>{
+      // 計算滑鼠相對於容器中心點的 X 與 Y 偏移量
+      const mouseX = e.clientX - centerX;
+      const mouseY = e.clientY - centerY;
+    
+      // 設定各層的移動係數（數字越大移動幅度越大）
+      const speed = l.getAttribute('layer-speed')|| 0.08; // 前景移動較快
+
+      // 套用 CSS transform 產生移動效果 (反向移動以模擬景深)
+      l.style.transform = `translate(-50%, -50%) translate(${-mouseX * speed}px, ${-mouseY * speed}px)`;
+  });
+});
+
+// 當滑鼠離開容器時，平滑重置回原始位置
+container.addEventListener('mouseleave', () => {
+  Layer.style.transform = 'translate(-50%, -50%) translate(0, 0)';
+  
+  // 註：若有搭配 CSS 的 transition: transform 0.3s ease，效果會更平滑
+});
+
 // 滾動動畫
 AOS.init();

@@ -3,6 +3,10 @@
 .into_banner{
     background-color: var(--color-primary-50);
     position: relative;
+    overflow: hidden;
+    .layerBox{
+        position: absolute;top:0;left:0;width: 100%;height:100%;
+    }
     .illus{
         position: absolute;
         pointer-events: none;
@@ -23,14 +27,14 @@
     .illus[src*="3.png"]{
         display: block;
         width: 80px;
-        top:   414px;
-        right: 34px;
+        bottom:258px;
+        right: 22px;
     }
     .illus[src*="6.png"]{
         display: block;
-        width: 113.14px;
-        top:   398.41px;
-        right: 114.5px;
+        width: 113px;
+        bottom:220px;
+        right: 102.5px;
     }
 }
 .projects{

@@ -28,7 +28,7 @@
             </ul>
         </div>
     </nav>
-    <header class="px-3 px-xl-8 pb-6 pb-xl-0 into_banner">
+    <header class="px-3 px-xl-8 pb-6 pb-xl-0 into_banner overflow-hidden">
         <section class="container p-0">
             <div class="row ai-c g-xl-6">
                 <div class="order-2 order-xl-1 col-xl-5 d-grid g-6">
@@ -42,18 +42,20 @@
                     </div>
                 </div>
                 <div class="order-1 order-xl-2 col-xl-7">
-                    <img class="w-100" src="img/index_person.png" alt="我的照片">
+                    <img class="w-100" src="img/index_person.png" alt="我的照片"  data-aos="fade-up" data-aos-duration="1000">
                 </div>
             </div>
         </section>
-        <img src="img/index_decora_1.png" class="illus">
-        <img src="img/index_decora_2.png" class="illus">
-        <img src="img/index_decora_3.png" class="illus">
-        <img src="img/index_decora_4.png" class="illus">
-        <img src="img/index_decora_5.png" class="illus">
-        <img src="img/index_decora_6.png" class="illus">
-        <img src="img/index_decora_3.png" class="illus">
-        <img src="img/index_decora_3.png" class="illus">
+        <div class="layerBox">
+            <img src="img/index_decora_1.png" class="illus" layer-speed="0.09">
+            <img src="img/index_decora_2.png" class="illus" layer-speed="0.07">
+            <img src="img/index_decora_3.png" class="illus" layer-speed="0.01">
+            <img src="img/index_decora_4.png" class="illus" layer-speed="0.05">
+            <img src="img/index_decora_5.png" class="illus" layer-speed="0.05">
+            <img src="img/index_decora_6.png" class="illus" layer-speed="0.01">
+            <img src="img/index_decora_3.png" class="illus" layer-speed="0.01">
+            <img src="img/index_decora_3.png" class="illus" layer-speed="0.01">
+        </div>
     </header>
     <section id="services" class="services bg-primary pr-0 pr-xl-8">
         <div class="container pr-0">
@@ -110,8 +112,8 @@
             <h2 class="heading-xxxxsm heading-xl-xxxsm">專案作品<br><span
                     class="heading-xlg heading-xl-xxxlg">PROJECTS</span></h2>
             <ul class="mt-6">
-                <li class="project-card">
-                    <article class="card-content col-xl-4">
+                <li class="project-card" data-aos="fade-right" data-aos-duration="1000">
+                    <article class="card-content col-xl-4"  data-aos="fade-up" data-aos-duration="1000">
                         <time>Oct 16, 2025</time>
                         <h6><span class="label">平面設計</span><span class="label">網頁設計</span></h6>
                         <h3 class="card-title">品牌視覺與電商整合，多肉植物品牌電商建置</h3>
@@ -119,8 +121,8 @@
                         <a href="projects.html" class="btn">前往專案</a>
                     </article>
                 </li>
-                <li class="project-card">
-                    <article class="card-content col-xl-4">
+                <li class="project-card" data-aos="fade-left" data-aos-duration="1000">
+                    <article class="card-content col-xl-4"  data-aos="fade-up" data-aos-duration="1000">
                         <time>Oct 16, 2025</time>
                         <h6><span class="label">平面設計</span><span class="label">網頁設計</span><span class="label">前端切版</span></h6>
                         <h3 class="card-title">數位產品 UI/UX 設計，個人化財務視覺化軟體</h3>
@@ -128,8 +130,8 @@
                         <a  href="projects.html" class="btn">前往專案</a>
                     </article>
                 </li>
-                <li class="project-card">
-                    <article class="card-content col-xl-4">
+                <li class="project-card" data-aos="fade-right" data-aos-duration="1000">
+                    <article class="card-content col-xl-4"  data-aos="fade-up" data-aos-duration="1000">
                         <time>Oct 16, 2025</time>
                         <h6><span class="label">前端切版</span><span class="label">後端開發</span></h6>
                         <h3 class="card-title">品牌識別與包裝設計，法式甜點品牌視覺重塑</h3>
@@ -212,7 +214,7 @@
         <div class="container p-0">
             <div class="row jcc aic gap-0 gap-xl-3">
                 <div class="col-xl-5">
-                    <img class="banner-img" src="img/subscription.png" alt="Banner Image">
+                    <img class="banner-img" src="img/subscription.png"  data-aos="fade-right" data-aos-duration="1000">
                 </div>
                 <div class="col-xl-7 right">
                     <h2 class="heading-xl-xxxsm">電子報訂閱<br><span class="heading-xlg heading-xl-xxxlg">SUBSCRIPTION</span>
@@ -258,8 +260,8 @@
                 </div>
             </div>
     </footer>
-   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/all.js"></script>
 </body>
 
